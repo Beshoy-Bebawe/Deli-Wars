@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
@@ -29,5 +32,15 @@ public class PauseManager : MonoBehaviour
                 pauseScreen.gameObject.SetActive(false);
             }
         }
+    }
+
+    public void RestartLevel([SerializeField] string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void ReturnToMainMenu([SerializeField] string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }

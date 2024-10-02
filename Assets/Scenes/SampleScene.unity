@@ -1024,16 +1024,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1174331659}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1436513657}
+  m_Father: {fileID: 1335588792}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80, y: 360}
+  m_AnchoredPosition: {x: 13, y: 348}
   m_SizeDelta: {x: 1077.4689, y: 194.8858}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1174331661
@@ -1141,6 +1141,7 @@ RectTransform:
   m_Children:
   - {fileID: 2034589980}
   - {fileID: 1082384831}
+  - {fileID: 1174331660}
   m_Father: {fileID: 1436513657}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1281,7 +1282,6 @@ RectTransform:
   m_Children:
   - {fileID: 1335588792}
   - {fileID: 1326306229}
-  - {fileID: 1174331660}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2207,7 +2207,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1436513658}
         m_TargetAssemblyTypeName: StartButtonScript, Assembly-CSharp
-        m_MethodName: ChangeScenes
+        m_MethodName: ChangeSceneLevel1
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
