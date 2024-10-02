@@ -22,7 +22,7 @@ public class StartButtonScript : MonoBehaviour
     {
         
     }
-    public void ChangeScenes( [SerializeField] string sceneName)
+    public void ChangeSceneLevel1( [SerializeField] string sceneName)
     {
        SceneManager.LoadScene(sceneName);
 
