@@ -6,6 +6,7 @@ public class NewBehaviourScript : MonoBehaviour
 {
     public GameObject optionsMenu;
     public GameObject mainMenu;
+    public GameObject levelSelect;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,5 +37,15 @@ public class NewBehaviourScript : MonoBehaviour
        public void EnableMain()
     {
         mainMenu.SetActive(true);
+    }
+
+     public void DisableLevels()
+    {
+        levelSelect.SetActive(false);
+    }
+
+       public void EnableLevels()
+    {
+        levelSelect.SetActive(true);
     }
 }
