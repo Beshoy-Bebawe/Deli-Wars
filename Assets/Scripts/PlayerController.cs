@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10.0f;
-
     Rigidbody2D rigidbody2d;
+    Animator animator;
     float horizontal;
     float vertical;
 
@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
          rigidbody2d = GetComponent<Rigidbody2D>();
+         animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
