@@ -4,17 +4,37 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 10.0f;
-    Rigidbody2D rigidbody2d;
+    //Animator 
     Animator animator;
+
+    //Movement
     float horizontal;
     float vertical;
+    public float speed = 10.0f;
+
+    //Health
+    public int health { get { return currentHealth; }}
+    int currentHealth;
+    public int maxHealth = 3;
+    
+    //GameComponent 
+    Rigidbody2D rigidbody2d;
+
+    public float timeInvincible = 2.0f;
+    bool isInvincible;
+    float invincibleTimer;
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
          rigidbody2d = GetComponent<Rigidbody2D>();
          animator = GetComponent<Animator>();
+
+         //Health sets current hp to max hp 
+         currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -23,6 +43,14 @@ public class PlayerController : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
           Vector2 move = new Vector2(horizontal, vertical);
+
+          if (isInvincible)
+        {
+            invincibleTimer -= Time.deltaTime;
+            if (invincibleTimer < 0)
+                isInvincible = false;
+        }
+        
     }
     void FixedUpdate()
     {
@@ -32,5 +60,24 @@ public class PlayerController : MonoBehaviour
 
         rigidbody2d.MovePosition(position);
     }
+
+    public void ChangeHealth(int amount)
+    {
+        if (amount < 0)
+        {
+            if (isInvincible)
+                return;
+            
+            isInvincible = true;
+            invincibleTimer = timeInvincible;
+            
+            //PlaySound(hitSound);
+        }
+        
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        
+        //UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
+    }
+    
 
 }
