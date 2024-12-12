@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     float horizontal;
     float vertical;
+    Vector2 lookDirection = new Vector2(1,0);
+    bool startedMoving;
+    bool isIdle;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -22,14 +26,43 @@ public class PlayerController : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-          Vector2 move = new Vector2(horizontal, vertical);
+        
+        Vector2 move = new Vector2(horizontal, vertical);
+
+        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+            {
+                lookDirection.Set(move.x, move.y);
+                lookDirection.Normalize();
+                startedMoving = true;
+                isIdle = false;
+            }
+            else if (Mathf.Approximately(move.x, 0.0f) || Mathf.Approximately(move.y, 0.0f))
+            {
+                isIdle = true;
+                startedMoving = false;
+                
+            }
+            if (startedMoving && !isIdle)
+            {
+               animator.SetBool("Moving", true);
+            }
+            else
+            {
+                animator.SetBool("Moving", false);
+            }    
+
+            animator.SetFloat("Move X", lookDirection.x);
+            animator.SetFloat("Move Y", lookDirection.y);
+
+        
+          
     }
     void FixedUpdate()
     {
         Vector2 position = rigidbody2d.position;
         position.x = position.x + speed * horizontal * Time.deltaTime;
         position.y = position.y + speed * vertical * Time.deltaTime;
-
+        
         rigidbody2d.MovePosition(position);
     }
 
