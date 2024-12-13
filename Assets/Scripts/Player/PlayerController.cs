@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
             
             isInvincible = true;
             invincibleTimer = timeInvincible;
-            
+            Debug.Log("Works"); 
             //PlaySound(hitSound);
         }
         
