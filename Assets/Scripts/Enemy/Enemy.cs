@@ -5,8 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     
-    //public float speed = 3.0f;
-    private Rigidbody2D enemyRb;
+    public float speed = 3.0f;
+    Rigidbody2D enemyRb;
     GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
     
     }
 
-
    // Damage////
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -31,8 +30,7 @@ public class Enemy : MonoBehaviour
         {
             player.ChangeHealth(-1);
         }
-       
-    }
 
+    }
     
 }
