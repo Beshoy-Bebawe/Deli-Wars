@@ -236,7 +236,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2326227334817621870, guid: 742867f98040f48338cb7b44a94cbff7, type: 3}
       propertyPath: timeInvincible
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4531556067447743749, guid: 742867f98040f48338cb7b44a94cbff7, type: 3}
       propertyPath: m_Constraints
@@ -405,11 +405,11 @@ RectTransform:
   m_Father: {fileID: 983312715}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 204, y: -57}
   m_SizeDelta: {x: 500, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &606996032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.3537736, b: 0.3537736, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -460,7 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3b414be238342398d674791a849749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mask: {fileID: 0}
+  mask: {fileID: 801196149}
 --- !u!1 &710956646
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,11 +561,11 @@ RectTransform:
   m_Father: {fileID: 606996031}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &801196149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,6 +794,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2107569176115770998, guid: 8133da09b0e11db48b7c4dc472f479bc, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8133da09b0e11db48b7c4dc472f479bc, type: 3}

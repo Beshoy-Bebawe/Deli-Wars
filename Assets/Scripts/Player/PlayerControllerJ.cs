@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerJ : MonoBehaviour
 {
     //Animator 
     Animator animator;
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         
-        //UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
+        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
     }
     
 
