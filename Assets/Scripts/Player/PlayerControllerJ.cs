@@ -76,7 +76,7 @@ public class PlayerControllerJ : MonoBehaviour
         
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         
-        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
+       
     }
     
 
