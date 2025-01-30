@@ -71,12 +71,10 @@ public class PlayerControllerJ : MonoBehaviour
             isInvincible = true;
             invincibleTimer = timeInvincible;
             Debug.Log("Works"); 
-            //PlaySound(hitSound);
         }
         
+        
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        HealthBar.instance.SetValue(currentHealth / (float)maxHealth);
     }
     
-
 }
