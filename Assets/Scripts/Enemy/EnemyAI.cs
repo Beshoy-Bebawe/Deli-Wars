@@ -16,7 +16,7 @@ public class EnemyAI : MonoBehaviour
  
     // Where is it going and how fast?
     Vector3 direction;
-    private float walkSpeed = 2f;
+    public float walkSpeed = 10f;
     private int currentTarget;    
     private Transform[] waypoints = null;
  
@@ -47,10 +47,11 @@ public class EnemyAI : MonoBehaviour
  
     private void Update()
     {
+        Vector3 currentPosition = transform.position;
         // If chasing get the position of the player and point towards it
         if (chasing)
         {
-            direction = playerTransform.position - transform.position;
+            direction = playerTransform.position - currentPosition;
             rotateEnemy();
         }
  
@@ -70,7 +71,7 @@ public class EnemyAI : MonoBehaviour
         animator.SetBool("playerInSight", inViewCone);
  
     }
- 
+    
     public void SetNextPoint()
     {
         // Pick a random waypoint 

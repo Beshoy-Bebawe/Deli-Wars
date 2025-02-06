@@ -24,6 +24,7 @@ public class PlayerControllerJ : MonoBehaviour
     bool isInvincible;
     float invincibleTimer;
 
+   // public EnemyAI coneZone;
 
 
 
@@ -32,6 +33,7 @@ public class PlayerControllerJ : MonoBehaviour
     {
          rigidbody2d = GetComponent<Rigidbody2D>();
          animator = GetComponent<Animator>();
+         //coneZone = GetComponent<EnemyAI> ();
 
          //Health sets current hp to max hp 
          currentHealth = maxHealth;
@@ -50,7 +52,12 @@ public class PlayerControllerJ : MonoBehaviour
             if (invincibleTimer < 0)
                 isInvincible = false;
         }
-        
+        /*
+        if (coneZone.inViewCone = true)
+        {
+            Debug.Log("Works");
+        }
+        */
     }
     void FixedUpdate()
     {

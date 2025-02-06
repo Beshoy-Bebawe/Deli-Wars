@@ -309,4 +309,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5916396cba8094c588bf30dd9350007b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inViewCone: 0
+  inViewCone: 1
+  walkSpeed: 10

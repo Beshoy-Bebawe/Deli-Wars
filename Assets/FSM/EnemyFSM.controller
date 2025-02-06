@@ -50,7 +50,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 9127345387484859324}
   m_StateMachineBehaviours:
-  - {fileID: 9195732563966460603}
+  - {fileID: 1756979837873096138}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -129,13 +129,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: distanceFromWaypoint
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -205,6 +205,18 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &1756979837873096138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827308686d3e34aafb5bcf77ff4b1b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5172459400541695982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -329,13 +341,13 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1108245705105828502}
-    m_Position: {x: 380, y: -180, z: 0}
+    m_Position: {x: 390, y: -180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 548541804558390052}
     m_Position: {x: 400, y: 70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5591595273867952114}
-    m_Position: {x: 0, y: 70, z: 0}
+    m_Position: {x: -10, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8866970667945822977}
     m_Position: {x: 0, y: -180, z: 0}
