@@ -97,7 +97,7 @@ public class EnemyAI : MonoBehaviour
         direction = playerTransform.position - transform.position;
         rotateEnemy();
     }
- 
+ s
     public void StopChasing()
     {
         chasing = false;
@@ -109,13 +109,10 @@ public class EnemyAI : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
         direction = direction.normalized;
     }
- 
     public void StartChasing()
     {
         chasing = true;
     }
- 
- 
     public void ToggleWaiting()
     {
         waiting  = !waiting;

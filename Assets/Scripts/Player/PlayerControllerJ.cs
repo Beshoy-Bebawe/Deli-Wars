@@ -24,8 +24,6 @@ public class PlayerControllerJ : MonoBehaviour
     bool isInvincible;
     float invincibleTimer;
 
-   // public EnemyAI coneZone;
-
 
 
     // Start is called before the first frame update
@@ -52,12 +50,7 @@ public class PlayerControllerJ : MonoBehaviour
             if (invincibleTimer < 0)
                 isInvincible = false;
         }
-        /*
-        if (coneZone.inViewCone = true)
-        {
-            Debug.Log("Works");
-        }
-        */
+
     }
     void FixedUpdate()
     {
