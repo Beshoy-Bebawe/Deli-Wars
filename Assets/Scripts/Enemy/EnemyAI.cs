@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
  
     // FSM related variables
     private Animator animator;
-    bool chasing = false;
+    public bool chasing = false;
     bool waiting = false;
     private float distanceFromTarget;
     public bool inViewCone;
@@ -23,6 +23,7 @@ public class EnemyAI : MonoBehaviour
     // This runs when the enemy is added to the scene
     private void Awake()
     {
+        //Debug.Log("Currently" + chasing);
         // Get a reference to the player's transform
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
  
@@ -47,6 +48,8 @@ public class EnemyAI : MonoBehaviour
  
     private void Update()
     {
+       //Debug.Log("Currently" + chasing);
+         Debug.Log("SOmething Else " + inViewCone);
         Vector3 currentPosition = transform.position;
         // If chasing get the position of the player and point towards it
         if (chasing)
@@ -97,7 +100,7 @@ public class EnemyAI : MonoBehaviour
         direction = playerTransform.position - transform.position;
         rotateEnemy();
     }
- s
+ 
     public void StopChasing()
     {
         chasing = false;
