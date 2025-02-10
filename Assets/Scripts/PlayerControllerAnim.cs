@@ -12,6 +12,7 @@ public class PlayerControllerAnim : MonoBehaviour
     Vector2 lookDirection = new Vector2(1,0);
     bool startedMoving;
     bool isIdle;
+    bool Spraying;
     
 
     // Start is called before the first frame update
@@ -49,11 +50,22 @@ public class PlayerControllerAnim : MonoBehaviour
             else
             {
                 animator.SetBool("Moving", false);
+                
             }    
 
             animator.SetFloat("Move X", lookDirection.x);
             animator.SetFloat("Move Y", lookDirection.y);
 
+            if (Input.GetKey(KeyCode.C))
+            {
+                animator.SetBool("Spraying", true);
+                Debug.Log("Spray");
+            }
+            else
+            {
+                animator.SetBool("Spraying", false);
+                 
+            }
         
           
     }
