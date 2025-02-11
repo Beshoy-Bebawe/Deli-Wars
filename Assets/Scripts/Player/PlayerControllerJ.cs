@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerJ : MonoBehaviour
 {
     //Animator 
     Animator animator;
@@ -15,12 +15,12 @@ public class PlayerController : MonoBehaviour
     //Health
     public int health { get { return currentHealth; }}
     int currentHealth;
-    public int maxHealth = 3;
+    private int maxHealth = 3;
     
     //GameComponent 
     Rigidbody2D rigidbody2d;
 
-    public float timeInvincible = 2.0f;
+    public float timeInvincible;
     bool isInvincible;
     float invincibleTimer;
 
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         
-        //UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
+       
     }
     
 
