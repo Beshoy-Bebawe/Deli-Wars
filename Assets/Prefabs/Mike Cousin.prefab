@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2326227334817621870}
   m_Layer: 0
   m_Name: Mike Cousin
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,3 +165,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  timeInvincible: 0

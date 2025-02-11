@@ -26,12 +26,12 @@ public class PlayerControllerJ : MonoBehaviour
 
 
 
-
     // Start is called before the first frame update
     void Start()
     {
          rigidbody2d = GetComponent<Rigidbody2D>();
          animator = GetComponent<Animator>();
+         //coneZone = GetComponent<EnemyAI> ();
 
          //Health sets current hp to max hp 
          currentHealth = maxHealth;
@@ -50,7 +50,7 @@ public class PlayerControllerJ : MonoBehaviour
             if (invincibleTimer < 0)
                 isInvincible = false;
         }
-        
+
     }
     void FixedUpdate()
     {
@@ -71,13 +71,10 @@ public class PlayerControllerJ : MonoBehaviour
             isInvincible = true;
             invincibleTimer = timeInvincible;
             Debug.Log("Works"); 
-            //PlaySound(hitSound);
         }
         
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         
-       
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
     }
     
-
 }
