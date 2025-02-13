@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerControllerJ : MonoBehaviour
 {
+    private GameManager gameManager;
     //Animator 
     Animator animator;
 
@@ -13,9 +14,9 @@ public class PlayerControllerJ : MonoBehaviour
     public float speed = 10.0f;
 
     //Health
-    public int health { get { return currentHealth; }}
-    int currentHealth;
-    private int maxHealth = 3;
+    //public int health { get { return currentHealth; }}
+    //int currentHealth;
+// private int maxHealth = 3;
     
     //GameComponent 
     Rigidbody2D rigidbody2d;
@@ -34,7 +35,7 @@ public class PlayerControllerJ : MonoBehaviour
          //coneZone = GetComponent<EnemyAI> ();
 
          //Health sets current hp to max hp 
-         currentHealth = maxHealth;
+         //currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -61,20 +62,13 @@ public class PlayerControllerJ : MonoBehaviour
         rigidbody2d.MovePosition(position);
     }
 
-    public void ChangeHealth(int amount)
+    private void OnTriggerEnter(Collider other)
     {
-        if (amount < 0)
+        if (gameObject.CompareTag("Enemy")) 
         {
-            if (isInvincible)
-                return;
-            
-            isInvincible = true;
-            invincibleTimer = timeInvincible;
-            Debug.Log("Works"); 
+            gameManager.UpdateLives(1);
         }
-        
-        
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
     }
+
     
 }

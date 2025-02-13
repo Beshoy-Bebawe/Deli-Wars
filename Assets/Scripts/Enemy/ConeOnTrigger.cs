@@ -12,7 +12,7 @@ public class ConeOnTrigger : MonoBehaviour
     {
         if (o.gameObject.tag == "Player")
         {
-         Debug.Log("Currently" + enemyAi.chasing);
+         //Debug.Log("Currently" + enemyAi.chasing);
             enemyAi.inViewCone = true;
             
             enemyAi.StartChasing();

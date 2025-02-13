@@ -49,7 +49,7 @@ public class EnemyAI : MonoBehaviour
     private void Update()
     {
        //Debug.Log("Currently" + chasing);
-         Debug.Log("SOmething Else " + inViewCone);
+         //Debug.Log("SOmething Else " + inViewCone);
         Vector3 currentPosition = transform.position;
         // If chasing get the position of the player and point towards it
         if (chasing)
