@@ -1,25 +1,19 @@
 fileFormatVersion: 2
-guid: ac75ab4dcd665442ebece35d06f73dfd
+guid: 406add0e204c040d3abd5e7be57f2767
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5417682737458801577
-    second: BackwardMovementComplete_strip6_0
+      213: -6686445609434150498
+    second: msVFX_Stylized_Smoke_1_Texture-removebg-preview 1_0
   - first:
-      213: 2798111824095123448
-    second: BackwardMovementComplete_strip6_1
+      213: -5888317452342841450
+    second: msVFX_Stylized_Smoke_1_Texture-removebg-preview 1_1
   - first:
-      213: -8684905860954108114
-    second: BackwardMovementComplete_strip6_2
+      213: -4241036637117770494
+    second: msVFX_Stylized_Smoke_1_Texture-removebg-preview 1_2
   - first:
-      213: -7268032763427117605
-    second: BackwardMovementComplete_strip6_3
-  - first:
-      213: 4202669117566181771
-    second: BackwardMovementComplete_strip6_4
-  - first:
-      213: -8205874637972049430
-    second: BackwardMovementComplete_strip6_5
+      213: 392135128303791909
+    second: msVFX_Stylized_Smoke_1_Texture-removebg-preview 1_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -50,7 +44,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -64,7 +58,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -86,9 +80,9 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
-    crunchedCompression: 1
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
@@ -98,9 +92,9 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
-    crunchedCompression: 1
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
@@ -109,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BackwardMovementComplete_strip6_0
+      name: msVFX_Stylized_Smoke_1_Texture-removebg-preview 1_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 0
-        width: 21
-        height: 39
+        x: 15
+        y: 15
+        width: 210
+        height: 216
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -123,20 +117,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7549000214680d4b0800000000000000
-      internalID: -5417682737458801577
+      spriteID: e9905bff429f433a0800000000000000
+      internalID: -6686445609434150498
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BackwardMovementComplete_strip6_1
+      name: msVFX_Stylized_Smoke_1_Texture-removebg-preview 1_1
       rect:
         serializedVersion: 2
-        x: 86
-        y: 0
-        width: 22
-        height: 38
+        x: 253
+        y: 13
+        width: 236
+        height: 226
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f7920501e3e4d620800000000000000
-      internalID: 2798111824095123448
+      spriteID: 69f2f58897e784ea0800000000000000
+      internalID: -5888317452342841450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BackwardMovementComplete_strip6_2
+      name: msVFX_Stylized_Smoke_1_Texture-removebg-preview 1_2
       rect:
         serializedVersion: 2
-        x: 150
-        y: 0
-        width: 22
-        height: 38
+        x: 516
+        y: 21
+        width: 216
+        height: 215
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2f4f125224097780800000000000000
-      internalID: -8684905860954108114
+      spriteID: 2059d2506afc425c0800000000000000
+      internalID: -4241036637117770494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BackwardMovementComplete_strip6_3
+      name: msVFX_Stylized_Smoke_1_Texture-removebg-preview 1_3
       rect:
         serializedVersion: 2
-        x: 214
-        y: 0
-        width: 21
-        height: 39
+        x: 761
+        y: 22
+        width: 220
+        height: 219
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,50 +180,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd5a60895b2c22b90800000000000000
-      internalID: -7268032763427117605
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BackwardMovementComplete_strip6_4
-      rect:
-        serializedVersion: 2
-        x: 277
-        y: 0
-        width: 22
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b816905bb41e25a30800000000000000
-      internalID: 4202669117566181771
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BackwardMovementComplete_strip6_5
-      rect:
-        serializedVersion: 2
-        x: 341
-        y: 0
-        width: 22
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ae1f94c4e70ee1e80800000000000000
-      internalID: -8205874637972049430
+      spriteID: 52fef7252d4217500800000000000000
+      internalID: 392135128303791909
       vertices: []
       indices: 
       edges: []
