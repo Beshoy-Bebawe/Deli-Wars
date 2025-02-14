@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3775910913699474260}
   - component: {fileID: 642667585156963612}
   - component: {fileID: 3084266095179557183}
+  - component: {fileID: 6847199743099154380}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -166,3 +167,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   timeInvincible: 3
+--- !u!114 &6847199743099154380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6161992057590353872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c62c6642e554a72bfd4965ecb9ad31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10

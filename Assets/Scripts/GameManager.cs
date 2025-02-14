@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI gameOverText; 
     public TextMeshProUGUI livesText;
 
-    //public bool isGameActive;
+    public bool isGameActive;
 
     public Button restartButton;
    //public GameObject titleScreen;
@@ -23,14 +23,14 @@ public class GameManager : MonoBehaviour
 
     // Start is called before the first frame update
 
-    public void StartGame()
+    public void Awake()
     {
         
         //score = 0;
         lives = 3;
         //UpdateScore(0);
         UpdateLives(0);
-        //isGameActive = true; 
+        isGameActive = true; 
         
         //titleScreen.gameObject.SetActive(false);
        // slider.gameObject.SetActive(false);
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
     public void GameOver() 
     {
         gameOverText.gameObject.SetActive(true); 
-        //isGameActive = false; 
+        isGameActive = false; 
         restartButton.gameObject.SetActive(true);
     }
     public void RestartGame()
