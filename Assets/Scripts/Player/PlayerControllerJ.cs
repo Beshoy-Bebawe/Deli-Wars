@@ -5,8 +5,17 @@ using UnityEngine;
 public class PlayerControllerJ : MonoBehaviour
 {
     private GameManager gameManager;
+
     //Animator 
     Animator animator;
+
+
+    //Powerup
+    public bool hasPowerup = false;
+    public PowerUpType currentPowerUp = PowerUpType.None;
+    private Coroutine powerupCountdown;
+    public GameObject powerupIndicator;
+
 
     //Movement
     float horizontal;
@@ -67,7 +76,26 @@ public class PlayerControllerJ : MonoBehaviour
         if (gameObject.CompareTag("Enemy")) 
         {
             gameManager.UpdateLives(1);
+        } 
+        if (other.CompareTag("Powerup"))
+        {
+            hasPowerup = true;
+            currentPowerUp = other.gameObject.GetComponent<PowerUp>().powerUpType;
+            Destroy(other.gameObject);
+
+            if(powerupCountdown != null)
+            {
+                StopCoroutine(powerupCountdown);
+            }
+            powerupCountdown = StartCoroutine(PowerupCountdownRoutine());
         }
+    }
+    IEnumerator PowerupCountdownRoutine()
+    {
+        yield return new WaitForSeconds(7);
+        hasPowerup = false; 
+        currentPowerUp = PowerUpType.None;
+        powerupIndicator.gameObject.SetActive(false);
     }
 
     
