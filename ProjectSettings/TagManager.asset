@@ -3,21 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - p1
-  - p2
-  - p3
-  - p4
-  - p5
-  - Enemy
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Tilemap
   - Water
   - UI
-  - 
+  - blueprint
   - 
   - 
   - 
