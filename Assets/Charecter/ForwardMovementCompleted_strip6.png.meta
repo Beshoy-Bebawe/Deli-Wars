@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: 41a877f596b294bc5881d68644aff48a
+guid: 1b3c45556f77e46259a6ab35d8a978a0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -986000193171173785
-    second: AllFourDirectionsComplete_strip4_0
+      213: 8803853637077970327
+    second: ForwardMovementCompleted_strip6_0
   - first:
-      213: -5672655950583769656
-    second: AllFourDirectionsComplete_strip4_1
+      213: 7750731209240745102
+    second: ForwardMovementCompleted_strip6_1
   - first:
-      213: 7546619204474903740
-    second: AllFourDirectionsComplete_strip4_2
+      213: -8059925217762509384
+    second: ForwardMovementCompleted_strip6_2
   - first:
-      213: -8523075944396837308
-    second: AllFourDirectionsComplete_strip4_3
+      213: -6430140006578685758
+    second: ForwardMovementCompleted_strip6_3
+  - first:
+      213: -6924821874172184540
+    second: ForwardMovementCompleted_strip6_4
+  - first:
+      213: -2673396655213789795
+    second: ForwardMovementCompleted_strip6_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -103,85 +109,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AllFourDirectionsComplete_strip4_0
+      name: ForwardMovementCompleted_strip6_0
       rect:
         serializedVersion: 2
-        x: 21
+        x: 22
         y: 0
-        width: 23
+        width: 21
         height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76ec0916c060152f0800000000000000
-      internalID: -986000193171173785
+      spriteID: 79d2094fc329d2a70800000000000000
+      internalID: 8803853637077970327
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AllFourDirectionsComplete_strip4_1
+      name: ForwardMovementCompleted_strip6_1
       rect:
         serializedVersion: 2
-        x: 86
+        x: 85
         y: 0
-        width: 17
-        height: 39
+        width: 22
+        height: 38
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c5d27cc77da641b0800000000000000
-      internalID: -5672655950583769656
+      spriteID: e84145c38f0209b60800000000000000
+      internalID: 7750731209240745102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AllFourDirectionsComplete_strip4_2
+      name: ForwardMovementCompleted_strip6_2
       rect:
         serializedVersion: 2
         x: 149
         y: 0
-        width: 23
-        height: 39
+        width: 22
+        height: 38
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbc1ed9ce2afab860800000000000000
-      internalID: 7546619204474903740
+      spriteID: 8bd7d0fb7b4652090800000000000000
+      internalID: -8059925217762509384
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AllFourDirectionsComplete_strip4_3
+      name: ForwardMovementCompleted_strip6_3
       rect:
         serializedVersion: 2
-        x: 217
+        x: 214
         y: 0
-        width: 17
+        width: 21
         height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44eac84f593f7b980800000000000000
-      internalID: -8523075944396837308
+      spriteID: 2c879db7bbd83c6a0800000000000000
+      internalID: -6430140006578685758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForwardMovementCompleted_strip6_4
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 1
+        width: 22
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 428bc19d13716ef90800000000000000
+      internalID: -6924821874172184540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForwardMovementCompleted_strip6_5
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 0
+        width: 22
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9db34608ef26ead0800000000000000
+      internalID: -2673396655213789795
       vertices: []
       indices: 
       edges: []

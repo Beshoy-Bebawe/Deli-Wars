@@ -52,6 +52,7 @@ public class PlayerControllerJ : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+        powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
           Vector2 move = new Vector2(horizontal, vertical);
 
           if (isInvincible)
@@ -62,23 +63,16 @@ public class PlayerControllerJ : MonoBehaviour
         }
 
     }
-    void FixedUpdate()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Vector2 position = rigidbody2d.position;
-        position.x = position.x + speed * horizontal * Time.deltaTime;
-        position.y = position.y + speed * vertical * Time.deltaTime;
-
-        rigidbody2d.MovePosition(position);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (gameObject.CompareTag("Enemy")) 
+        Destroy(other.gameObject);
+        if (other.gameObject.CompareTag("Enemy")) 
         {
             gameManager.UpdateLives(1);
         } 
-        if (other.CompareTag("Powerup"))
+        if (other.gameObject.CompareTag("Powerup"))
         {
+            Debug.Log("aaa");
             hasPowerup = true;
             currentPowerUp = other.gameObject.GetComponent<PowerUp>().powerUpType;
             Destroy(other.gameObject);
@@ -90,6 +84,15 @@ public class PlayerControllerJ : MonoBehaviour
             powerupCountdown = StartCoroutine(PowerupCountdownRoutine());
         }
     }
+
+    void FixedUpdate()
+    {
+        Vector2 position = rigidbody2d.position;
+        position.x = position.x + speed * horizontal * Time.deltaTime;
+        position.y = position.y + speed * vertical * Time.deltaTime;
+
+        rigidbody2d.MovePosition(position);
+    }
     IEnumerator PowerupCountdownRoutine()
     {
         yield return new WaitForSeconds(7);
@@ -97,6 +100,5 @@ public class PlayerControllerJ : MonoBehaviour
         currentPowerUp = PowerUpType.None;
         powerupIndicator.gameObject.SetActive(false);
     }
-
     
 }
