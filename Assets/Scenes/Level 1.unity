@@ -604,7 +604,7 @@ GameObject:
   m_Component:
   - component: {fileID: 698469796}
   - component: {fileID: 698469795}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: camera bounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14641,7 +14641,7 @@ GameObject:
   - component: {fileID: 2049329576}
   - component: {fileID: 2049329579}
   - component: {fileID: 2049329580}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -14775,7 +14775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6847199743208931713, guid: 742867f98040f48338cb7b44a94cbff7, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6847199743208931714, guid: 742867f98040f48338cb7b44a94cbff7, type: 3}
       propertyPath: m_RootOrder
