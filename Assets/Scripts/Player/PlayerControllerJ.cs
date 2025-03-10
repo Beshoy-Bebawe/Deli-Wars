@@ -10,6 +10,9 @@ public class PlayerControllerJ : MonoBehaviour
     Animator animator;
 
 
+    //HitSystem
+    private float hitPoints;
+    public bool punch = false;
     //Powerup
     public bool hasPowerup = false;
     public PowerUpType currentPowerUp = PowerUpType.None;
@@ -20,7 +23,7 @@ public class PlayerControllerJ : MonoBehaviour
     //Movement
     float horizontal;
     float vertical;
-    public float speed = 10.0f;
+    private float speed = 10.0f;
 
     //Health
     //public int health { get { return currentHealth; }}
@@ -30,6 +33,7 @@ public class PlayerControllerJ : MonoBehaviour
     //GameComponent 
     Rigidbody2D rigidbody2d;
 
+    //Invincible...say that again...
     public float timeInvincible;
     bool isInvincible;
     float invincibleTimer;
@@ -62,13 +66,25 @@ public class PlayerControllerJ : MonoBehaviour
                 isInvincible = false;
         }
 
+        if (currentPowerUp == PowerUpType.Speed){
+            speed = 20.0f;
+        }
+        else{
+            speed = 10.0f;
+        }
+
+
+        // if (currentPowerUp == PowerUpType.Defense)
+        // {
+
+        // }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(other.gameObject);
+        
         if (other.gameObject.CompareTag("Enemy")) 
         {
-            gameManager.UpdateLives(1);
+            Destroy(other.gameObject);
         } 
         if (other.gameObject.CompareTag("Powerup"))
         {
@@ -95,10 +111,15 @@ public class PlayerControllerJ : MonoBehaviour
     }
     IEnumerator PowerupCountdownRoutine()
     {
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(5);
         hasPowerup = false; 
         currentPowerUp = PowerUpType.None;
-        powerupIndicator.gameObject.SetActive(false);
+       // powerupIndicator.gameObject.SetActive(false);
+
     }
-    
+
+    // public void HitSystem()
+    // {
+    //     if(Input.GetKeyDown())
+    // }
 }
