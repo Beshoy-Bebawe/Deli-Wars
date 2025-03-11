@@ -11,8 +11,9 @@ public class PlayerControllerJ : MonoBehaviour
 
 
     //HitSystem
-    private float hitPoints;
-    public bool punch = false;
+    // private float hitPoints;
+    // public bool punch = false;
+
     //Powerup
     public bool hasPowerup = false;
     public PowerUpType currentPowerUp = PowerUpType.None;
@@ -33,10 +34,10 @@ public class PlayerControllerJ : MonoBehaviour
     //GameComponent 
     Rigidbody2D rigidbody2d;
 
-    //Invincible...say that again...
-    public float timeInvincible;
-    bool isInvincible;
-    float invincibleTimer;
+    // //Invincible...say that again...
+    // public float timeInvincible;
+    // bool isInvincible;
+    // float invincibleTimer;
 
 
 
@@ -58,22 +59,18 @@ public class PlayerControllerJ : MonoBehaviour
         vertical = Input.GetAxis("Vertical");
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
           Vector2 move = new Vector2(horizontal, vertical);
-
-          if (isInvincible)
-        {
-            invincibleTimer -= Time.deltaTime;
-            if (invincibleTimer < 0)
-                isInvincible = false;
-        }
-
+        //   if (isInvincible)
+        // {
+        //     invincibleTimer -= Time.deltaTime;
+        //     if (invincibleTimer < 0)
+        //         isInvincible = false;
+        // }
         if (currentPowerUp == PowerUpType.Speed){
             speed = 20.0f;
         }
         else{
             speed = 10.0f;
         }
-
-
         // if (currentPowerUp == PowerUpType.Defense)
         // {
 
@@ -84,7 +81,8 @@ public class PlayerControllerJ : MonoBehaviour
         
         if (other.gameObject.CompareTag("Enemy")) 
         {
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
+            HealthSystem.TakeDamage(10);
         } 
         if (other.gameObject.CompareTag("Powerup"))
         {
