@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerControllerJ : MonoBehaviour
 {
     private GameManager gameManager;
-
+    PlayerControllerJ player;
     //Animator 
     Animator animator;
 
@@ -20,7 +20,6 @@ public class PlayerControllerJ : MonoBehaviour
     private Coroutine powerupCountdown;
     public GameObject powerupIndicator;
 
-
     //Movement
     float horizontal;
     float vertical;
@@ -29,8 +28,9 @@ public class PlayerControllerJ : MonoBehaviour
     //Health
     //public int health { get { return currentHealth; }}
     //int currentHealth;
-// private int maxHealth = 3;
+    // private int maxHealth = 3;
     
+    //public HealthSystem healthSystem;
     //GameComponent 
     Rigidbody2D rigidbody2d;
 
@@ -46,6 +46,7 @@ public class PlayerControllerJ : MonoBehaviour
     {
          rigidbody2d = GetComponent<Rigidbody2D>();
          animator = GetComponent<Animator>();
+         //healthSystem = .GetComponent<HealthSystem>();
          //coneZone = GetComponent<EnemyAI> ();
 
          //Health sets current hp to max hp 
@@ -78,11 +79,11 @@ public class PlayerControllerJ : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
+
         if (other.gameObject.CompareTag("Enemy")) 
         {
             //Destroy(other.gameObject);
-            HealthSystem.TakeDamage(10);
+            //healthSystem.TakeDamage(10);
         } 
         if (other.gameObject.CompareTag("Powerup"))
         {
