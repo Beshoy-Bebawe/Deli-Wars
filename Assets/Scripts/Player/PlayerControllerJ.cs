@@ -9,11 +9,6 @@ public class PlayerControllerJ : MonoBehaviour
     //Animator 
     Animator animator;
 
-
-    //HitSystem
-    // private float hitPoints;
-    // public bool punch = false;
-
     //Powerup
     public bool hasPowerup = false;
     public PowerUpType currentPowerUp = PowerUpType.None;
@@ -26,11 +21,7 @@ public class PlayerControllerJ : MonoBehaviour
     private float speed = 10.0f;
 
     //Health
-    //public int health { get { return currentHealth; }}
-    //int currentHealth;
-    // private int maxHealth = 3;
-    
-    //public HealthSystem healthSystem;
+    // HPManager health;
     //GameComponent 
     Rigidbody2D rigidbody2d;
 
@@ -46,11 +37,9 @@ public class PlayerControllerJ : MonoBehaviour
     {
          rigidbody2d = GetComponent<Rigidbody2D>();
          animator = GetComponent<Animator>();
-         //healthSystem = .GetComponent<HealthSystem>();
-         //coneZone = GetComponent<EnemyAI> ();
+        //  health = GetComponent<HPManager>();
 
          //Health sets current hp to max hp 
-         //currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -83,7 +72,7 @@ public class PlayerControllerJ : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy")) 
         {
             //Destroy(other.gameObject);
-            //healthSystem.TakeDamage(10);
+            Debug.Log("I was touched");
         } 
         if (other.gameObject.CompareTag("Powerup"))
         {
@@ -116,9 +105,4 @@ public class PlayerControllerJ : MonoBehaviour
        // powerupIndicator.gameObject.SetActive(false);
 
     }
-
-    // public void HitSystem()
-    // {
-    //     if(Input.GetKeyDown())
-    // }
 }
