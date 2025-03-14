@@ -88,7 +88,6 @@ public class PlayerControllerJ : MonoBehaviour
             powerupCountdown = StartCoroutine(PowerupCountdownRoutine());
         }
     }
-
     void FixedUpdate()
     {
         Vector2 position = rigidbody2d.position;
