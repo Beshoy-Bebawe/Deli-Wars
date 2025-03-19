@@ -120,4 +120,14 @@ public class EnemyAI : MonoBehaviour
     {
         waiting  = !waiting;
     }
+
+
+    // void OnTriggerStay2D(Collider2D other)
+    // {
+    //     PlayerControllerJ controller = other.GetComponent<PlayerControllerJ >();
+
+    //     if (controller != null)
+    //     {
+    //         controller.TakeDamage(-1);
+    //     }
 }

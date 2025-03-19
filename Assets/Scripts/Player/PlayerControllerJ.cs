@@ -5,10 +5,9 @@ using UnityEngine;
 public class PlayerControllerJ : MonoBehaviour
 {
     private GameManager gameManager;
-
+    PlayerControllerJ player;
     //Animator 
     Animator animator;
-
 
     //Powerup
     public bool hasPowerup = false;
@@ -16,23 +15,20 @@ public class PlayerControllerJ : MonoBehaviour
     private Coroutine powerupCountdown;
     public GameObject powerupIndicator;
 
-
     //Movement
     float horizontal;
     float vertical;
-    public float speed = 10.0f;
+   private float speed = 10.0f;
 
     //Health
-    //public int health { get { return currentHealth; }}
-    //int currentHealth;
-// private int maxHealth = 3;
-    
+    // HPManager health;
     //GameComponent 
     Rigidbody2D rigidbody2d;
 
-    public float timeInvincible;
-    bool isInvincible;
-    float invincibleTimer;
+    // //Invincible...say that again...
+    // public float timeInvincible;
+    // bool isInvincible;
+    // float invincibleTimer;
 
 
 
@@ -41,10 +37,9 @@ public class PlayerControllerJ : MonoBehaviour
     {
          rigidbody2d = GetComponent<Rigidbody2D>();
          animator = GetComponent<Animator>();
-         //coneZone = GetComponent<EnemyAI> ();
+        //  health = GetComponent<HPManager>();
 
          //Health sets current hp to max hp 
-         //currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -54,21 +49,30 @@ public class PlayerControllerJ : MonoBehaviour
         vertical = Input.GetAxis("Vertical");
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
           Vector2 move = new Vector2(horizontal, vertical);
-
-          if (isInvincible)
-        {
-            invincibleTimer -= Time.deltaTime;
-            if (invincibleTimer < 0)
-                isInvincible = false;
+        //   if (isInvincible)
+        // {
+        //     invincibleTimer -= Time.deltaTime;
+        //     if (invincibleTimer < 0)
+        //         isInvincible = false;
+        // }
+        if (currentPowerUp == PowerUpType.Speed){
+            speed = 20.0f;
         }
+        else{
+            speed = 10.0f;
+        }
+        // if (currentPowerUp == PowerUpType.Defense)
+        // {
 
+        // }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(other.gameObject);
+
         if (other.gameObject.CompareTag("Enemy")) 
         {
-            gameManager.UpdateLives(1);
+            //Destroy(other.gameObject);
+            Debug.Log("I was touched");
         } 
         if (other.gameObject.CompareTag("Powerup"))
         {
@@ -84,7 +88,6 @@ public class PlayerControllerJ : MonoBehaviour
             powerupCountdown = StartCoroutine(PowerupCountdownRoutine());
         }
     }
-
     void FixedUpdate()
     {
         Vector2 position = rigidbody2d.position;
@@ -95,10 +98,10 @@ public class PlayerControllerJ : MonoBehaviour
     }
     IEnumerator PowerupCountdownRoutine()
     {
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(5);
         hasPowerup = false; 
         currentPowerUp = PowerUpType.None;
-        powerupIndicator.gameObject.SetActive(false);
+       // powerupIndicator.gameObject.SetActive(false);
+
     }
-    
 }
