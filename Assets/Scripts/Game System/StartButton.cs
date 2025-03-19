@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 
 public class StartButton : MonoBehaviour
-
 {
     private Button button;
     //[SerializeField] string sceneName;

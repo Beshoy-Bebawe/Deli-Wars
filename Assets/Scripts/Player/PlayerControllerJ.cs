@@ -18,7 +18,7 @@ public class PlayerControllerJ : MonoBehaviour
     //Movement
     float horizontal;
     float vertical;
-    private float speed = 10.0f;
+   private float speed = 10.0f;
 
     //Health
     // HPManager health;
