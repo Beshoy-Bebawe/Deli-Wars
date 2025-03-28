@@ -18,7 +18,7 @@ public class PlayerControllerJ : MonoBehaviour
     //Movement
     float horizontal;
     float vertical;
-    private float speed = 2.0f;
+    private float speed;
 
     //Health
      HPManager health;
@@ -59,7 +59,7 @@ public class PlayerControllerJ : MonoBehaviour
             speed = 20.0f;
         }
         else{
-            speed = 10.0f;
+            speed = 5.0f;
         }
         // if (currentPowerUp == PowerUpType.Defense)
         // {
