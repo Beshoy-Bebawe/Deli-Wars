@@ -59,7 +59,7 @@ public class PlayerControllerJ : MonoBehaviour
             speed = 20.0f;
         }
         else{
-            speed = 5.0f;
+            speed = 10.0f;
         }
         // if (currentPowerUp == PowerUpType.Defense)
         // {

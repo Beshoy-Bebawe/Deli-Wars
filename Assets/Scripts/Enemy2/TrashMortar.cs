@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TrashMortar : MonoBehaviour
 {
+    public GameObject trashPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,9 @@ public class TrashMortar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+         if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(trashPrefab, transform.position, trashPrefab.transform.rotation);
+        }
     }
 }
