@@ -269,7 +269,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201859616}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6573da18e3ed54185a664d7d97f3acb3, type: 3}
   m_Name: 
@@ -662,12 +662,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 549521784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7fff98e8bf7e4998baafbb1c9b821cc, type: 3}
+  m_Script: {fileID: 11500000, guid: 5666c5227c01c448f9e05d8d90d87695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 2088799461}
+  - {fileID: 344152592}
+  - {fileID: 288641713}
+  - {fileID: 1181916854}
+  - {fileID: 2101110678}
   chasing: 0
-  inViewCone: 0
-  walkSpeed: 10
+  speed: 10
 --- !u!1 &575046531
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +726,10 @@ PrefabInstance:
     - target: {fileID: 2806489860210765032, guid: 35038431f4e0945fdb162d476f3f7abc, type: 3}
       propertyPath: m_Name
       value: dummy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806489860210765032, guid: 35038431f4e0945fdb162d476f3f7abc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8944952900242500282, guid: 35038431f4e0945fdb162d476f3f7abc, type: 3}
       propertyPath: m_RootOrder
@@ -1291,7 +1300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f465453d3fd5849f39b99fc59da56d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAi: {fileID: 549521785}
+  enemyAi: {fileID: 0}
 --- !u!1001 &1290211178
 PrefabInstance:
   m_ObjectHideFlags: 0

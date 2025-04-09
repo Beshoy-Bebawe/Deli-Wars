@@ -91,7 +91,7 @@ public class EnemyAI : MonoBehaviour
  
         // Load the direction of the next waypoint
         direction = waypoints[currentTarget].position - transform.position;
-        rotateEnemy();
+        
     }
  
     public void Chase()
