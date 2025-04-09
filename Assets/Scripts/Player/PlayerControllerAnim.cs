@@ -56,7 +56,7 @@ public class PlayerControllerAnim : MonoBehaviour
             animator.SetFloat("Move X", lookDirection.x);
             animator.SetFloat("Move Y", lookDirection.y);
 
-            PunchAnim();
+            
             
         
           
@@ -68,6 +68,7 @@ public class PlayerControllerAnim : MonoBehaviour
         position.y = position.y + speed * vertical * Time.deltaTime;
         
         rigidbody2d.MovePosition(position);
+        PunchAnim();
     }
 
     void PunchAnim()
