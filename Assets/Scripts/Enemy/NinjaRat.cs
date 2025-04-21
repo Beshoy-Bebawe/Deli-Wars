@@ -101,4 +101,15 @@ public class NinjaRat : MonoBehaviour
         }
     }
 
+     void OnCollisionEnter2D(Collision2D other)
+    {
+         playerD = other.gameObject.GetComponent<PlayerDamTest>();
+          Vector2 direction = player.transform.position - transform.position;
+        if (playerD != null)
+        {
+            playerD.ChangeHealth(-1);
+            playerD.KB(direction);
+        }
+    }
+    
 }

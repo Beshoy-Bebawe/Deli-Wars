@@ -58,7 +58,7 @@ public class PlayerControllerAnim : MonoBehaviour
 
             
             
-        
+         PunchAnim();
           
     }
     void FixedUpdate()
@@ -68,7 +68,7 @@ public class PlayerControllerAnim : MonoBehaviour
         position.y = position.y + speed * vertical * Time.deltaTime;
         
         rigidbody2d.MovePosition(position);
-        PunchAnim();
+        
     }
 
     void PunchAnim()
