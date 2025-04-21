@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class TestEnemy : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     protected Transform player;
     protected NavMeshAgent agent;
@@ -96,7 +96,7 @@ public class TestEnemy : MonoBehaviour
          HurtOnCollision playerD = other.gameObject.GetComponent<HurtOnCollision>();
           Vector2 direction = player.transform.position - transform.position;
 
-         
+            Destroy(projectile);
 
         if (playerD != null)
         {
