@@ -13,15 +13,15 @@ public class PlayerControllerJ : MonoBehaviour
     public bool hasPowerup = false;
     public PowerUpType currentPowerUp = PowerUpType.None;
     private Coroutine powerupCountdown;
-    public GameObject powerupIndicator;
+    //public GameObject powerupIndicator;
 
     //Movement
     float horizontal;
     float vertical;
-   private float speed = 10.0f;
+    private float speed;
 
     //Health
-    // HPManager health;
+     HPManager health;
     //GameComponent 
     Rigidbody2D rigidbody2d;
 
@@ -37,7 +37,7 @@ public class PlayerControllerJ : MonoBehaviour
     {
          rigidbody2d = GetComponent<Rigidbody2D>();
          animator = GetComponent<Animator>();
-        //  health = GetComponent<HPManager>();
+          health = GetComponent<HPManager>();
 
          //Health sets current hp to max hp 
     }
@@ -47,7 +47,7 @@ public class PlayerControllerJ : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-        powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
+        //powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
           Vector2 move = new Vector2(horizontal, vertical);
         //   if (isInvincible)
         // {
@@ -69,11 +69,12 @@ public class PlayerControllerJ : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (other.gameObject.CompareTag("Enemy")) 
-        {
-            //Destroy(other.gameObject);
-            Debug.Log("I was touched");
-        } 
+        // if (other.gameObject.CompareTag("Enemy")) 
+        // {
+        //     //Destroy(other.gameObject);
+        //     Debug.Log("I was touched");
+        //     health.TakeDamage(20);
+        // } 
         if (other.gameObject.CompareTag("Powerup"))
         {
             Debug.Log("aaa");
@@ -103,5 +104,16 @@ public class PlayerControllerJ : MonoBehaviour
         currentPowerUp = PowerUpType.None;
        // powerupIndicator.gameObject.SetActive(false);
 
+    }
+    void OnTriggerStay2D(Collider2D other)
+    {
+        PlayerControllerJ player = other.GetComponent<PlayerControllerJ >();
+
+        if (other.gameObject.CompareTag("Enemy")) 
+        {
+            //Destroy(other.gameObject);
+            Debug.Log("I was touched");
+            health.TakeDamage(20);
+        } 
     }
 }
