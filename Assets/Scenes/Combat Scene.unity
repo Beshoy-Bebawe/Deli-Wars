@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rat: {fileID: 11400000, guid: b1084d0c0411544bcb4a8bc6cad61112, type: 2}
-  player: {fileID: 1564467515}
+  player: {fileID: 0}
   Xdirection: 0
   detect:
     serializedVersion: 2
@@ -322,7 +322,7 @@ Transform:
   m_LocalPosition: {x: -0.221, y: -0.098, z: -27.506706}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
-  m_Father: {fileID: 723609578}
+  m_Father: {fileID: 2041861277}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &190104181
@@ -407,7 +407,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &190104185
 MonoBehaviour:
@@ -423,12 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowSpeed: 4
   yOffset: 1
-  target: {fileID: 723609578}
---- !u!4 &723609578 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6847199743208931714, guid: 742867f98040f48338cb7b44a94cbff7, type: 3}
-  m_PrefabInstance: {fileID: 1209036148606568520}
-  m_PrefabAsset: {fileID: 0}
+  target: {fileID: 0}
 --- !u!1 &725115397
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,13 +628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71aa275f9d5e941c7a4258cf358d479a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 0
 --- !u!1 &1426063925
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,36 +655,9 @@ Transform:
   m_LocalPosition: {x: 0.224, y: -0.098, z: -27.506706}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
-  m_Father: {fileID: 723609578}
+  m_Father: {fileID: 2041861277}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1564467515 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6847199743208931713, guid: 742867f98040f48338cb7b44a94cbff7, type: 3}
-  m_PrefabInstance: {fileID: 1209036148606568520}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1564467522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564467515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0a6873a9ff4e48a0afc9d964687bb4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isHit: 0
-  AtkPoint:
-  - {fileID: 1575691439}
-  - {fileID: 1426063926}
-  - {fileID: 159163569}
-  - {fileID: 1653351529}
-  attackRange: 0.8
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &1575691438
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,7 +685,7 @@ Transform:
   m_LocalPosition: {x: 0.009000015, y: -0.233, z: -27.506706}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
-  m_Father: {fileID: 723609578}
+  m_Father: {fileID: 2041861277}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1653351528
@@ -754,7 +715,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.254, z: -27.506706}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
-  m_Father: {fileID: 723609578}
+  m_Father: {fileID: 2041861277}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1771733141
@@ -861,6 +822,11 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!4 &2041861277 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6847199743208931714, guid: 742867f98040f48338cb7b44a94cbff7, type: 3}
+  m_PrefabInstance: {fileID: 1209036148606568520}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1209036148606568520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -898,7 +864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6847199743208931714, guid: 742867f98040f48338cb7b44a94cbff7, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6847199743208931714, guid: 742867f98040f48338cb7b44a94cbff7, type: 3}
       propertyPath: m_LocalScale.x
