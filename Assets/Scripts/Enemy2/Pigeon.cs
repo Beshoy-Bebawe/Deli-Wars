@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class TestEnemy : MonoBehaviour
+public class Pigeon : MonoBehaviour
 {
     protected Transform player;
     protected NavMeshAgent agent;
     protected float moveSpeed = 10;
-    public GameObject projectile;
+
 
     
     public LayerMask detect;
@@ -61,11 +61,12 @@ public class TestEnemy : MonoBehaviour
             // Direct movement if NavMesh is not available
             Vector2 direction = (player.position - transform.position).normalized;
             
-            
+            if(LOS)
+            {
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
             transform.rotation = Quaternion.Euler(0, 0, angle);
             transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
-            
+            }
         }
     }
 
@@ -96,7 +97,7 @@ public class TestEnemy : MonoBehaviour
          HurtOnCollision playerD = other.gameObject.GetComponent<HurtOnCollision>();
           Vector2 direction = player.transform.position - transform.position;
 
-         
+          
 
         if (playerD != null)
         {

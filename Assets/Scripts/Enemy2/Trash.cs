@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrashMortar : MonoBehaviour
+public class Trash : MonoBehaviour
 {
     public GameObject trashPrefab;
     // Start is called before the first frame update
