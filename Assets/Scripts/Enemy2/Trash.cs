@@ -5,7 +5,7 @@ using UnityEngine;
 public class Trash : MonoBehaviour
 {
     public GameObject trashPrefab;
-    private float spawnRate = 20.0f;
+    private float spawnRate = 1.0f;
 
    // public List<GameObject> targets; 
     //private bool act;

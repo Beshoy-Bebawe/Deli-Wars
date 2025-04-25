@@ -77,7 +77,7 @@ public class PlayerControllerJ : MonoBehaviour
         // } 
         if (other.gameObject.CompareTag("Powerup"))
         {
-            Debug.Log("aaa");
+            Debug.Log("powerup");
             hasPowerup = true;
             currentPowerUp = other.gameObject.GetComponent<PowerUp>().powerUpType;
             Destroy(other.gameObject);
