@@ -6,13 +6,17 @@ using UnityEngine.AI;
 public class Pigeon : MonoBehaviour
 {
     protected Transform player;
+    public float speed;
+
+    public float distanceBetween;
+    public Transform raycastOrigin;
     protected NavMeshAgent agent;
     protected float moveSpeed = 10;
-
-
     
     public LayerMask detect;
     bool LOS = false;
+    float distance;
+
 
     protected virtual void Awake()
     {
@@ -37,6 +41,15 @@ public class Pigeon : MonoBehaviour
 
     protected virtual void Update()
     {
+        distance = Vector2.Distance(transform.position, player.transform.position);
+        Vector2 direction = player.transform.position - transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        if ((distance < distanceBetween))
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        }
+
         if (player == null)
             return;
         if (agent.isOnNavMesh)
@@ -59,11 +72,11 @@ public class Pigeon : MonoBehaviour
         else
         {
             // Direct movement if NavMesh is not available
-            Vector2 direction = (player.position - transform.position).normalized;
+            Vector2 direction2 = (player.position - transform.position).normalized;
             
             if(LOS)
             {
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+            float angle2 = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
             transform.rotation = Quaternion.Euler(0, 0, angle);
             transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
             }
