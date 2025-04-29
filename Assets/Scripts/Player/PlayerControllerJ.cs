@@ -105,15 +105,4 @@ public class PlayerControllerJ : MonoBehaviour
        // powerupIndicator.gameObject.SetActive(false);
 
     }
-    void OnTriggerStay2D(Collider2D other)
-    {
-        PlayerControllerJ player = other.GetComponent<PlayerControllerJ >();
-
-        if (other.gameObject.CompareTag("Enemy")) 
-        {
-            //Destroy(other.gameObject);
-            Debug.Log("I was touched");
-            health.TakeDamage(20);
-        } 
-    }
 }
