@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class NewTest : MonoBehaviour
+public class SmartFollow : MonoBehaviour
 {
     public GameObject player;
     bool LOS = false;

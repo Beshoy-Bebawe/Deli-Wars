@@ -285,7 +285,7 @@ MonoBehaviour:
   raycastOrigin: {fileID: 175563262}
   detect:
     serializedVersion: 2
-    m_Bits: 2176
+    m_Bits: 2048
 --- !u!4 &340664381 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6937394690510230947, guid: 125d1cbf04e7941289da4d965e332a60, type: 3}
@@ -532,49 +532,6 @@ MonoBehaviour:
   FollowSpeed: 4
   yOffset: 1
   target: {fileID: 634829937}
---- !u!1 &575046531
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 575046533}
-  - component: {fileID: 575046532}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &575046532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575046531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5adf097b8fc5b4c9f814001cbc1fce1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &575046533
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575046531}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2735846, y: 2.121815, z: -4694.992}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &634829937 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6161992057590353875, guid: fdd06b702f88c45f5b866928b4ccb029, type: 3}
