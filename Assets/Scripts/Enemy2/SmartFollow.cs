@@ -11,7 +11,7 @@ public class SmartFollow : MonoBehaviour
     public LayerMask detect; // LayerMask for detection
     // bool LOS = false;
     float distance;
-    float timer = 4;
+    //float timer = 4;
     // public int Xdirection;
     // Animator anim;
     Rigidbody2D rb;
@@ -44,6 +44,7 @@ public class SmartFollow : MonoBehaviour
         RaycastHit2D ray = Physics2D.Raycast(raycastOrigin.position, direction, Mathf.Infinity, ~detect);
         if (ray.collider != null)
         {
+            
             LOS = ray.collider.gameObject.CompareTag("Player");
             if (ray.collider.gameObject.CompareTag("Player"))
             {
