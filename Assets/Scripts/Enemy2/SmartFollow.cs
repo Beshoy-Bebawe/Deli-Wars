@@ -35,7 +35,10 @@ public class SmartFollow : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         }
     }
-
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, distanceBetween);
+    }
     void FixedUpdate()
     {
         // Calculate direction from this object to the player

@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     protected Transform player;
     protected NavMeshAgent agent;
     protected float moveSpeed = 10;
-    public GameObject projectile;
+   
 
     
     public LayerMask detect;
@@ -71,24 +71,7 @@ public class Projectile : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Calculate direction from this object to the player
-        Vector2 Tdirection = player.position - transform.position;
-        // Cast the ray toward the player, using the inverse of detect layermask
-        RaycastHit2D ray = Physics2D.Raycast(transform.position, Tdirection, Mathf.Infinity, ~detect);
-        if (ray.collider != null)
-        {
-            LOS = ray.collider.gameObject.CompareTag("Player");
-          
-            if (ray.collider.gameObject.CompareTag("Player"))
-            {
-                Debug.DrawRay(transform.position, Tdirection, Color.blue);
-                
-            }
-            else
-            {
-                Debug.DrawRay(transform.position, Tdirection, Color.red);
-            }
-        }
+        
     }
 
      void OnCollisionEnter2D(Collision2D other)
@@ -96,7 +79,7 @@ public class Projectile : MonoBehaviour
          HurtOnCollision playerD = other.gameObject.GetComponent<HurtOnCollision>();
           Vector2 direction = player.transform.position - transform.position;
 
-            Destroy(projectile);
+            Destroy(gameObject);
 
         if (playerD != null)
         {
@@ -106,8 +89,4 @@ public class Projectile : MonoBehaviour
         }
 
     }
-
-    
-
-
 }
