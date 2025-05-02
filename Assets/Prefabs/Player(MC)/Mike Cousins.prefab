@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6270657349345766416}
   - component: {fileID: 577580337208925930}
   m_Layer: 7
-  m_Name: Player 1
+  m_Name: Mike Cousins
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class Trash : MonoBehaviour
 {
-  bool gh = false ;
-    public GameObject trashPrefab;
-     public GameObject player;
+     public GameObject trashPrefab;
+     private GameObject player;
+
      public float distanceBetween;
-    public LayerMask detect;
+     public LayerMask detect;
+     
      bool LOS = false;
      float distance;
 
    //public List<GameObject> targets; 
-    void Start()
+    void Awake()
     {
       InvokeRepeating("TrashLaunch", 0f, 1.3f);
+      player =  GameObject.Find("Mike Cousins");
 
     }
     // Update is called once per frame
     void Update()
     {
-    
+
     }
      void FixedUpdate()
     {
-        
-      
         distance = Vector2.Distance(transform.position, player.transform.position);
         // Calculate direction from this object to the player
         Vector2 Tdirection = player.transform.position - transform.position;
@@ -66,7 +66,6 @@ public class Trash : MonoBehaviour
         Debug.Log("Cool");
         Instantiate(trashPrefab, transform.position, trashPrefab.transform.rotation);
         }
-
-
       }
+
 }

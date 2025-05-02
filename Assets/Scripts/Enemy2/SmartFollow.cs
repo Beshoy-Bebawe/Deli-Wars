@@ -3,23 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 public class SmartFollow : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
     bool LOS = false;
-    public float speed;
+    private float speed = 4;
     public float distanceBetween;
     public Transform raycastOrigin; // Reference to the raycast origin point
     public LayerMask detect; // LayerMask for detection
-    // bool LOS = false;
+ 
     float distance;
-    //float timer = 4;
-    // public int Xdirection;
-    // Animator anim;
+
     Rigidbody2D rb;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        player =  GameObject.Find("Mike Cousins");
         rb = GetComponent<Rigidbody2D>();
-        // If raycastOrigin isn't assigned, use this transform as default
+
         if (raycastOrigin == null)
             raycastOrigin = transform;
     }
