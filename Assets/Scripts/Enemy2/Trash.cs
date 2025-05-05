@@ -16,7 +16,7 @@ public class Trash : MonoBehaviour
    //public List<GameObject> targets; 
     void Awake()
     {
-      InvokeRepeating("TrashLaunch", 0f, 1.3f);
+      InvokeRepeating("TrashLaunch", 0.0f, 1.3f);
       player =  GameObject.Find("Mike Cousins");
 
     }
