@@ -6,19 +6,21 @@ public class PlayerCombat : MonoBehaviour
 {
     public bool isHit = false;
     public Transform[] AtkPoint;
+    public GameObject[] AtkTrigger;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     PlayerControllerAnim Anim;
+     NinjaRat Rat;
     float hitTimer;
     float timer = 1;
     Vector2 lookDirection;
-
     int currentLookDirection;
 
     // Start is called before the first frame update
     void Awake()
     {
        Anim = GetComponent<PlayerControllerAnim>();
+       Rat =  GameObject.FindWithTag("Rat").GetComponent<NinjaRat>();
     }
 
     // Update is called once per frame
@@ -43,23 +45,30 @@ public class PlayerCombat : MonoBehaviour
             currentLookDirection = 3;
         }
 
-        if(Input.GetKeyDown(KeyCode.C))
-        {
-            Punch();
-        }
+    
     }
 
-    void Punch()
+    public void Punch()
     {
         
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AtkPoint[currentLookDirection].position,attackRange,enemyLayers);
-    
+        Debug.Log(hitEnemies);
         //Detect Enemy
         //Damage Enemy
-
+        
         foreach(Collider2D enemy in hitEnemies)
         {
+            if(Anim.atkTakeEffect = true)
+            {
             Debug.Log("We hit " + enemy.name);
+            NinjaRat enemyRat = enemy.GetComponent<NinjaRat>();
+            if (enemyRat != null)
+            {
+                // Safely damage the enemy without triggering player destruction
+                enemyRat.TakeDamage(-4);
+                StartCoroutine(Rat.Knockback());
+            }
+            }
         }
 
     }
@@ -70,6 +79,8 @@ public class PlayerCombat : MonoBehaviour
         
         Gizmos.DrawWireSphere(AtkPoint[currentLookDirection].position, attackRange);
     }
+
+    
 
      
 }
