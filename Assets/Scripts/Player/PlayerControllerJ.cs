@@ -59,7 +59,7 @@ public class PlayerControllerJ : MonoBehaviour
             speed = 20.0f;
         }
         else{
-            speed = 10.0f;
+            speed = 6.0f;
         }
         // if (currentPowerUp == PowerUpType.Defense)
         // {
@@ -105,15 +105,5 @@ public class PlayerControllerJ : MonoBehaviour
        // powerupIndicator.gameObject.SetActive(false);
 
     }
-    void OnTriggerStay2D(Collider2D other)
-    {
-        PlayerControllerJ player = other.GetComponent<PlayerControllerJ >();
-
-        if (other.gameObject.CompareTag("Enemy")) 
-        {
-            //Destroy(other.gameObject);
-            Debug.Log("I was touched");
-            health.TakeDamage(20);
-        } 
-    }
+  
 }
