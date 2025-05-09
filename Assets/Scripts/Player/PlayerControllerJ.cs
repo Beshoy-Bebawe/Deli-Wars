@@ -21,7 +21,7 @@ public class PlayerControllerJ : MonoBehaviour
     private float speed;
 
     //Health
-     HPManager health;
+     
     //GameComponent 
     Rigidbody2D rigidbody2d;
 
@@ -32,7 +32,7 @@ public class PlayerControllerJ : MonoBehaviour
     {
          rigidbody2d = GetComponent<Rigidbody2D>();
          animator = GetComponent<Animator>();
-          health = GetComponent<HPManager>();
+         
 
     }
 

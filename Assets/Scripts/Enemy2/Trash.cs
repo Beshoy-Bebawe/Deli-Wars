@@ -6,6 +6,7 @@ public class Trash : MonoBehaviour
 {
      public GameObject trashPrefab;
      private GameObject player;
+     Rigidbody2D rb;
 
      public float distanceBetween;
      public LayerMask detect;
@@ -16,6 +17,7 @@ public class Trash : MonoBehaviour
    //public List<GameObject> targets; 
     void Awake()
     {
+      rb = GetComponent<Rigidbody2D>();
       InvokeRepeating("TrashLaunch", 0.0f, 1.3f);
       player =  GameObject.Find("Mike Cousins");
 
@@ -67,5 +69,10 @@ public class Trash : MonoBehaviour
         Instantiate(trashPrefab, transform.position, trashPrefab.transform.rotation);
         }
       }
+
+      // public void EnemyDamaged()
+      // {
+
+      // }
 
 }
