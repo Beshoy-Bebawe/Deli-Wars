@@ -50,7 +50,7 @@ public class SmartFollow : MonoBehaviour
             LOS = ray.collider.gameObject.CompareTag("Player");
             if (ray.collider.gameObject.CompareTag("Player"))
             {
-                Debug.DrawRay(raycastOrigin.position, direction, Color.blue);
+                Debug.DrawRay(raycastOrigin.position, direction, Color.green);
             }
             else
             {
