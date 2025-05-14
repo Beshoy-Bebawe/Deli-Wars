@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerControllerAnim : MonoBehaviour
 {
+    [SerializeField] float blockWindow;
     public float speed = 10.0f;
     public Rigidbody2D rigidbody2d;
     Animator animator;
@@ -26,6 +27,10 @@ public class PlayerControllerAnim : MonoBehaviour
     BoxCollider2D dashThrough;
     bool atkInEffect;
     public bool atkTakeEffect;
+
+    public bool isBlocking = false;
+    public bool canBlock = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +40,8 @@ public class PlayerControllerAnim : MonoBehaviour
          Attack =  GetComponent<PlayerCombat>();
          tr = GetComponent<TrailRenderer>();
          dashThrough = GetComponent<BoxCollider2D>();
+
+         
 
     }
 
@@ -52,11 +59,6 @@ public class PlayerControllerAnim : MonoBehaviour
 
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-
-
-         
-         
-        
         
         move = new Vector2(horizontal, vertical);
         
@@ -97,15 +99,18 @@ public class PlayerControllerAnim : MonoBehaviour
             animator.SetFloat("Move Y", lookDirection.y);
 
         PunchAnim();
+        BlockAnim();
             
             
          
-          
+          //Debug.Log(!PlayerF.knocked);
+          //Debug.Log(isBlocking);
+          //Debug.Log(canBlock);
     }
     void FixedUpdate()
     {
 
-        if(!PlayerF.knocked)
+        if(PlayerF.knocked == false && isBlocking == false)
         {
             if (dashing)
             {
@@ -136,9 +141,26 @@ public class PlayerControllerAnim : MonoBehaviour
         
     }
 
+    void BlockAnim()
+    {
+        if(Input.GetKey(KeyCode.B) && canBlock == true )
+        {
+            isBlocking = true;
+            PlayerF.Invic = true;
+            StartCoroutine(BlockCD());
+        }
+
+        if(Input.GetKeyUp(KeyCode.B) && canBlock == true)
+        {
+            isBlocking = false;
+
+
+        }
+    }
+
     public IEnumerator Dash()
         {
-        dashThrough.isTrigger = true;
+        Physics2D.IgnoreLayerCollision(7,8,true);
         canDash = false;
         dashing = true;
         PlayerF.Invic = true;
@@ -156,7 +178,7 @@ public class PlayerControllerAnim : MonoBehaviour
         Debug.Log("Works");
         dashing = false;
         tr.emitting = false;
-        dashThrough.isTrigger = false;
+        Physics2D.IgnoreLayerCollision(7,8,false);
         rigidbody2d.velocity  = Vector2.zero;
         PlayerF.Invic = false;
         yield return new WaitForSeconds(dashCD);
@@ -182,7 +204,12 @@ public class PlayerControllerAnim : MonoBehaviour
         atkInEffect = false;
     }
 
+    public IEnumerator BlockCD()
+    {
+        yield return new WaitForSeconds(blockWindow);
+        canBlock = true;
         
+    }  
    
 
     
