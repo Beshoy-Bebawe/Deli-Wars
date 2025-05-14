@@ -1,75 +1,115 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class PlayerDamTest : MonoBehaviour
 {
     public int maxHealth;
     int CurrentHealth;
-    float Invicibletimer = 2.0f;
-    float KBtime = 1.0f;
-    public bool TrueKB;
-    public bool Invic;
-    public float mag = 5.0f;
+
+    public float speed = 10.0f;
+    float hori;
+    float vert;
+
+
+  
+
+
+    float kbTime = 4f;
+    public bool canKnock = true;
+    public bool knocked;
+    float kbPow = 4f;
+    float kbCD = 1f;
+
+    public float Invicibletimer = 2.0f;
+    public bool Invic = false;
+    public bool wasHit = false;
+
+
     SpriteRenderer rend;
-    Rigidbody2D rb;
-   
+    
+    public NinjaRat Rat;
+    PlayerControllerAnim Pdirect;
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
         CurrentHealth = maxHealth;
+       
         rend = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();
+        
+        Pdirect = GetComponent<PlayerControllerAnim>();
     }
+
     // Update is called once per frame
     void Update()
     {
-       
-            if (Invic)
-            {
-                rend.color = Color.red;
-                Invicibletimer -= Time.deltaTime;
-                KBtime-= Time.deltaTime;
-                if (KBtime < 0)
-                {
-                    TrueKB = false;
-                }
-               
-                if(Invicibletimer < 0 )
-                {
-                Invic = false;
-               
-                rend.color = Color.white;
-                }
-            }
+
+        
+
+            
+
            
+
+
     }
+
     public void ChangeHealth(int amount)
     {
         if (Invic)
             return;
-       
+        wasHit = true;
+        
+
         Invic = true;
-        TrueKB = true;
-        KBtime = 1.0f;
-        Invicibletimer = 2.0f;
-       
-       
-           
+        Invicibletimer = .5f;
+
+
+
         CurrentHealth = Mathf.Clamp(CurrentHealth + amount,0,maxHealth);
         Debug.Log(CurrentHealth+ "/" +maxHealth);
+
+        if (CurrentHealth <= 0)
+        {
+          Destroy(gameObject);
+        }
+        
     }
-    public void KB(Vector2 direction)
+
+    public IEnumerator Knockback()
     {
-        if (TrueKB)
-        {
-            rb.velocity = direction * mag;
-        }
-        else
-        {
-            mag = 0;
-            rb.velocity = Vector2.zero;
-        }
-       
-       
+        canKnock = false;
+        knocked = true;
+        Pdirect.rigidbody2d.velocity = Rat.direction * kbPow*4;
+        Invic = true;
+        rend.color = Color.red;
+        yield return new WaitForSeconds(.25f);
+        knocked = false;
+        rend.color = Color.white;
+        Pdirect.rigidbody2d.velocity  = Vector2.zero;
+        yield return new WaitForSeconds(.75f);
+        Invic = false;
+        yield return new WaitForSeconds(kbCD);
+        canKnock = true;
+
+
     }
+
+
+    // private IEnumerator Teleport()
+    // {
+    //     canDash = false;
+    //     dashing = true;
+    //     transform.position = new Vector2(transform.position.x + 10,transform.position.y);
+    //     Debug.Log("Works");
+    //     dashing = false;
+    //     rb.velocity  = Vector2.zero;
+    //     yield return new WaitForSeconds(0.5f);
+    //     Debug.Log("Works Too");
+    //     canDash = true;
+
+
+    // }
 }

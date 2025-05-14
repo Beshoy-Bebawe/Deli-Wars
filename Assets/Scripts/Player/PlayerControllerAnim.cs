@@ -9,7 +9,7 @@ public class PlayerControllerAnim : MonoBehaviour
     Animator animator;
     float horizontal;
     float vertical;
-    public Vector2 lookDirection = new Vector2(1,0);
+    Vector2 lookDirection = new Vector2(1,0);
     bool startedMoving;
     bool isIdle;
     bool Spraying;
@@ -56,9 +56,17 @@ public class PlayerControllerAnim : MonoBehaviour
             animator.SetFloat("Move X", lookDirection.x);
             animator.SetFloat("Move Y", lookDirection.y);
 
-            
-            
-         PunchAnim();
+            if (Input.GetKey(KeyCode.C))
+            {
+                animator.SetBool("Spraying", true);
+                Debug.Log("Spray");
+            }
+            else
+            {
+                animator.SetBool("Spraying", false);
+                 
+            }
+        
           
     }
     void FixedUpdate()
@@ -68,20 +76,6 @@ public class PlayerControllerAnim : MonoBehaviour
         position.y = position.y + speed * vertical * Time.deltaTime;
         
         rigidbody2d.MovePosition(position);
-        
-    }
-
-    void PunchAnim()
-    {
-        if(Input.GetKeyDown(KeyCode.C))
-        {
-            animator.SetBool("Attack", true);
-    
-        }
-        else
-        {
-            animator.SetBool("Attack", false);
-        }
     }
 
 }
