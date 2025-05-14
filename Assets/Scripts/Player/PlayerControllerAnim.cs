@@ -160,7 +160,7 @@ public class PlayerControllerAnim : MonoBehaviour
 
     public IEnumerator Dash()
         {
-        dashThrough.isTrigger = true;
+        Physics2D.IgnoreLayerCollision(7,8,true);
         canDash = false;
         dashing = true;
         PlayerF.Invic = true;
@@ -178,7 +178,7 @@ public class PlayerControllerAnim : MonoBehaviour
         Debug.Log("Works");
         dashing = false;
         tr.emitting = false;
-        dashThrough.isTrigger = false;
+        Physics2D.IgnoreLayerCollision(7,8,false);
         rigidbody2d.velocity  = Vector2.zero;
         PlayerF.Invic = false;
         yield return new WaitForSeconds(dashCD);
