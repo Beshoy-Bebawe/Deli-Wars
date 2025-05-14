@@ -1052,7 +1052,7 @@ GameObject:
   m_Component:
   - component: {fileID: 437238452}
   - component: {fileID: 437238451}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Game Collider
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1919,6 +1919,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 106034478}
+    - target: {fileID: 6673488325670683067, guid: 2f8bf9aee89004399a35c703b8499922, type: 3}
+      propertyPath: detect.m_Bits
+      value: 776
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f8bf9aee89004399a35c703b8499922, type: 3}
 --- !u!4 &731520732 stripped
