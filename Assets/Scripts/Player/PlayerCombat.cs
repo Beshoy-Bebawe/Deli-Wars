@@ -16,6 +16,7 @@ public class PlayerCombat : MonoBehaviour
     Vector2 lookDirection;
     int currentLookDirection;
 
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -64,14 +65,13 @@ public class PlayerCombat : MonoBehaviour
             NinjaRat enemyRat = enemy.GetComponent<NinjaRat>();
             if (enemyRat != null)
             {
-                // Safely damage the enemy without triggering player destruction
-                enemyRat.TakeDamage(-4);
-                StartCoroutine(Rat.Knockback());
+                 enemyRat.EnemyDamaged();
             }
             }
         }
 
     }
+
     void OnDrawGizmosSelected()
     {
         if (AtkPoint == null)
