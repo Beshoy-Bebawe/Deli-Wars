@@ -57,7 +57,7 @@ public class PlayerControllerJ : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (other.gameObject.CompareTag("Powerup"))
+        if (other.gameObject.CompareTag("Powerup") )
         {
             Debug.Log("powerup");
             hasPowerup = true;
@@ -69,6 +69,10 @@ public class PlayerControllerJ : MonoBehaviour
                 StopCoroutine(powerupCountdown);
             }
             powerupCountdown = StartCoroutine(PowerupCountdownRoutine());
+        }
+        if(other.gameObject.CompareTag("Collect"))
+        {
+            Destroy(other.gameObject);
         }
     }
     void FixedUpdate()
