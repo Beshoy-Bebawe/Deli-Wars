@@ -9,12 +9,14 @@ public class Projectile : MonoBehaviour
     protected float moveSpeed = 3;
    
     public LayerMask detect;
+    private HealthManager hp;
 
     protected virtual void Awake()
     {
         
         player = GameObject.FindGameObjectWithTag("Player").transform;
         Vector2 direction = player.position - transform.position;
+        hp = GameObject.Find("Health Manager").GetComponent<HealthManager>(); 
         StartCoroutine(SelfDestruct());
     }
 
@@ -42,6 +44,8 @@ public class Projectile : MonoBehaviour
         {
           
             playerD.ChangeHealth(-1);
+            hp.TakeDamage(20);
+            
             
         }
     }

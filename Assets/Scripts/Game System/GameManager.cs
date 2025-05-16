@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private int score; 
+    public int score; 
     public TextMeshProUGUI scoreText;
     // Start is called before the first frame update
     void Start()
@@ -28,5 +28,9 @@ public class GameManager : MonoBehaviour
     {
         score += scoreToAdd;
         scoreText.text = "Honey Buns: " + score; 
+    }
+    public void SubtractScore(int scoreToSub)
+    {
+        score += scoreToSub;
     }
 }

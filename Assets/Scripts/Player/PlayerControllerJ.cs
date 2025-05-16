@@ -20,12 +20,14 @@ public class PlayerControllerJ : MonoBehaviour
     float vertical;
     private float speed;
 
+    //Bun
+    public GameObject bunPrefab;
     //GameComponent 
     Rigidbody2D rigidbody2d;
 
     //Coins
      private GameManager gameManager;
-    public int pointValue;
+     public int pointValue;
 
 
 
@@ -77,6 +79,20 @@ public class PlayerControllerJ : MonoBehaviour
             gameManager.UpdateScore(pointValue);
         }
     }
+    //Honey Bun Shooter//
+    // public void ShootBuns()
+    // {
+    //     Debug.Log("Stuff");
+    //     if(gameManager.score > 0 )
+    //     {
+    //         Debug.Log("Stuff");
+    //         if (Input.GetKeyDown(KeyCode.M))
+    //         {
+    //         //Instantiate(bunPrefab, transform.position, bunPrefab.transform.rotation);
+    //         gameManager.SubtractScore(-1);
+    //         }
+    //     }
+    // }
     void FixedUpdate()
     {
         Vector2 position = rigidbody2d.position;
