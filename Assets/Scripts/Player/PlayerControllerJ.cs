@@ -20,10 +20,12 @@ public class PlayerControllerJ : MonoBehaviour
     float vertical;
     private float speed;
 
-    //Health
-     
     //GameComponent 
     Rigidbody2D rigidbody2d;
+
+    //Coins
+     private GameManager gameManager;
+    public int pointValue;
 
 
 
@@ -32,8 +34,7 @@ public class PlayerControllerJ : MonoBehaviour
     {
          rigidbody2d = GetComponent<Rigidbody2D>();
          animator = GetComponent<Animator>();
-         
-
+         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>(); 
     }
 
     // Update is called once per frame
@@ -73,6 +74,7 @@ public class PlayerControllerJ : MonoBehaviour
         if(other.gameObject.CompareTag("Collect"))
         {
             Destroy(other.gameObject);
+            gameManager.UpdateScore(pointValue);
         }
     }
     void FixedUpdate()
