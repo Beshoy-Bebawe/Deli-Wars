@@ -29,8 +29,8 @@ public class GameManager : MonoBehaviour
         score += scoreToAdd;
         scoreText.text = "Honey Buns: " + score; 
     }
-    public void SubtractScore(int scoreToSub)
-    {
-        score += scoreToSub;
-    }
+    // public void SubtractScore(int scoreToSub)
+    // {
+    //     score += scoreToSub;
+    // }
 }

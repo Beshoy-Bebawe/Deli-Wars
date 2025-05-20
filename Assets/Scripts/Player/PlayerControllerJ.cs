@@ -6,6 +6,7 @@ public class PlayerControllerJ : MonoBehaviour
 {
     
     PlayerControllerJ player;
+    Vector2 lookDirection = new Vector2(1,0);
     //Animator 
     Animator animator;
 
@@ -44,11 +45,21 @@ public class PlayerControllerJ : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-          Vector2 move = new Vector2(horizontal, vertical);
-    
-        if (currentPowerUp == PowerUpType.Speed){
-            speed = 7.0f;
+        Vector2 move = new Vector2(horizontal, vertical);
+         
+         if(!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+        {
+            lookDirection.Set(move.x, move.y);
+            lookDirection.Normalize();
         }
+         if (Input.GetKeyDown(KeyCode.M))
+            {
+                 ShootBuns();
+            }
+        if (currentPowerUp == PowerUpType.Speed)
+           {
+            speed = 7.0f;
+           }
         else{
             speed = 5.0f;
         }
@@ -80,19 +91,21 @@ public class PlayerControllerJ : MonoBehaviour
         }
     }
     //Honey Bun Shooter//
-    // public void ShootBuns()
-    // {
-    //     Debug.Log("Stuff");
-    //     if(gameManager.score > 0 )
-    //     {
-    //         Debug.Log("Stuff");
-    //         if (Input.GetKeyDown(KeyCode.M))
-    //         {
-    //         //Instantiate(bunPrefab, transform.position, bunPrefab.transform.rotation);
-    //         gameManager.SubtractScore(-1);
-    //         }
-    //     }
-    // }
+    public void ShootBuns()
+    {
+        Debug.Log("Stuff");
+      if(gameManager.score > 0 )
+        {
+            Debug.Log("Stuff");
+            GameObject bunObj = Instantiate(bunPrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
+
+            Bun projectile = bunObj.GetComponent<Bun>();
+            projectile.Launch(lookDirection, 300);
+
+            gameManager.UpdateScore(-1);
+            
+        }
+    }
     void FixedUpdate()
     {
         Vector2 position = rigidbody2d.position;
