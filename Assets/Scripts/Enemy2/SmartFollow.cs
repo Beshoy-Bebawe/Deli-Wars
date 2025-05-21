@@ -9,6 +9,10 @@ public class SmartFollow : MonoBehaviour
     public float distanceBetween;
     public Transform raycastOrigin; // Reference to the raycast origin point
     public LayerMask detect; // LayerMask for detection
+    Vector3 odirection;
+
+
+     private Transform playerTransform;
  
     float distance;
 
@@ -18,9 +22,13 @@ public class SmartFollow : MonoBehaviour
     {
         player =  GameObject.Find("Mike Cousins");
         rb = GetComponent<Rigidbody2D>();
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
         if (raycastOrigin == null)
+        {
             raycastOrigin = transform;
+        }
+        
     }
     // Update is called once per frame
     void Update()
@@ -32,11 +40,19 @@ public class SmartFollow : MonoBehaviour
         if ((distance < distanceBetween) && LOS )
         {
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+            odirection = playerTransform.position - transform.position;
+            rotateEnemy();
         }
     }
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, distanceBetween);
+    }
+    private void rotateEnemy()
+    {
+        float angle = Mathf.Atan2(odirection.y, odirection.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+        odirection = odirection.normalized;
     }
     void FixedUpdate()
     {
