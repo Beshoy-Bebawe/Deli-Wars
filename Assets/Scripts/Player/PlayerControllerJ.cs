@@ -93,17 +93,15 @@ public class PlayerControllerJ : MonoBehaviour
     //Honey Bun Shooter//
     public void ShootBuns()
     {
-        Debug.Log("Stuff");
       if(gameManager.score > 0 )
         {
             Debug.Log("Stuff");
-            GameObject bunObj = Instantiate(bunPrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
+            GameObject bunObj = Instantiate(bunPrefab, rigidbody2d.position + lookDirection * 0.5f, Quaternion.identity);
 
             Bun projectile = bunObj.GetComponent<Bun>();
-            projectile.Launch(lookDirection, 300);
+            projectile.Launch(lookDirection, 4);
 
             gameManager.UpdateScore(-1);
-            
         }
     }
     void FixedUpdate()

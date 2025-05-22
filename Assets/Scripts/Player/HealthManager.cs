@@ -5,27 +5,24 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
-
+    private GameObject player;
     public Image healthBar;
     public float healthAmount = 100f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player =  GameObject.Find("Mike Cousins");
     }
-
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.O))
-        {
-            TakeDamage(20);
-        }
-        if(Input.GetKeyDown(KeyCode.I))
-        {
-            Heal(10);
-        }
+      if(healthAmount <= 0)
+      {
+        Debug.Log("GAME OVER");
+        Destroy(player);
+        Time.timeScale = 0;
+      }
     }
 
     public void TakeDamage(float damage)

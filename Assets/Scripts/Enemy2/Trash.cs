@@ -57,7 +57,6 @@ public class Trash : MonoBehaviour
     }
     void SpawnTarget()
       {
-         Debug.Log("Cool");
         Instantiate(trashPrefab, transform.position, trashPrefab.transform.rotation);
       }
 
@@ -65,14 +64,7 @@ public class Trash : MonoBehaviour
       {
         if(LOS && (distance < distanceBetween))
         {
-        Debug.Log("Cool");
         Instantiate(trashPrefab, transform.position, trashPrefab.transform.rotation);
         }
       }
-
-      // public void EnemyDamaged()
-      // {
-
-      // }
-
 }

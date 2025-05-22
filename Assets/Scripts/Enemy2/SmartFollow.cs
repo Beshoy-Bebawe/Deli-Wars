@@ -10,9 +10,10 @@ public class SmartFollow : MonoBehaviour
     public Transform raycastOrigin; // Reference to the raycast origin point
     public LayerMask detect; // LayerMask for detection
     Vector3 odirection;
+    Animator anim;
+    private HealthManager hp;
 
-
-     private Transform playerTransform;
+    private Transform playerTransform;
  
     float distance;
 
@@ -21,7 +22,9 @@ public class SmartFollow : MonoBehaviour
     void Awake()
     {
         player =  GameObject.Find("Mike Cousins");
+        hp = GameObject.Find("Health Manager").GetComponent<HealthManager>(); 
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
         if (raycastOrigin == null)
@@ -39,9 +42,14 @@ public class SmartFollow : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         if ((distance < distanceBetween) && LOS )
         {
+            anim.SetBool("Follow", true);
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             odirection = playerTransform.position - transform.position;
             rotateEnemy();
+        }
+        else
+        {
+            anim.SetBool("Follow", false);
         }
     }
     void OnDrawGizmosSelected()
@@ -53,6 +61,15 @@ public class SmartFollow : MonoBehaviour
         float angle = Mathf.Atan2(odirection.y, odirection.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
         odirection = odirection.normalized;
+    }
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        PlayerControllerJ player = other.gameObject.GetComponent<PlayerControllerJ>();
+        if (player != null)
+        {
+            hp.TakeDamage(20);
+        }
+        
     }
     void FixedUpdate()
     {
