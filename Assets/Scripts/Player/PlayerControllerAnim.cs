@@ -21,7 +21,7 @@ public class PlayerControllerAnim : MonoBehaviour
     public bool canDash = true;
     bool dashing;
     float dashTime = .4f;
-    float dashPow = 15f;
+    float dashPow = 10f;
     float dashCD = 1f;
     TrailRenderer tr;
     BoxCollider2D dashThrough;
