@@ -20,7 +20,7 @@ public class PlayerDamTest : MonoBehaviour
     float kbTime = 4f;
     public bool canKnock = true;
     public bool knocked;
-    float kbPow = 4f;
+    float kbPow = 9f;
     float kbCD = 1f;
 
     public float Invicibletimer = 2.0f;
@@ -84,7 +84,7 @@ public class PlayerDamTest : MonoBehaviour
     {
         canKnock = false;
         knocked = true;
-        Pdirect.rigidbody2d.velocity = direction * kbPow*4;
+        Pdirect.rigidbody2d.velocity = direction * kbPow;
         Invic = true;
         rend.color = Color.red;
         yield return new WaitForSeconds(.25f);

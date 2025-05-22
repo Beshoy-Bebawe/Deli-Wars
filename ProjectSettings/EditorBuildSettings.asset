@@ -5,16 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Rickys cinema.unity
+    guid: e6879393dc7c543fbaada9ad351adab1
   - enabled: 1
     path: Assets/Scenes/main menu.unity
     guid: 383861065f85947ca83d19b6a47ecb11
   - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: 2be1f62242e934c6da85635e01a9ae28
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Deli Wars Level 1.unity
     guid: fd51c321feb1d4cca9cc8c382941c8f7
   - enabled: 1

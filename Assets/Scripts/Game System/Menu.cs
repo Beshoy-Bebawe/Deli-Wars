@@ -46,6 +46,8 @@ public class Menu : MonoBehaviour
        public void EnableMain()
     {
         mainMenu.SetActive(true);
+        levelSelect.SetActive(false);
+        optionsMenu.SetActive(false);
         Debug.Log("Enabled");
 
     }
@@ -60,5 +62,10 @@ public class Menu : MonoBehaviour
     {
         levelSelect.SetActive(true);
         Debug.Log("Enabled");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
