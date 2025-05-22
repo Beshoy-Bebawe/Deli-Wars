@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bd2d631443e14e0db85236ce8c5ab81, type: 3}
-  m_Name: Rat
+  m_Script: {fileID: 11500000, guid: 1a737d7153c294b6389c084f15c80ea1, type: 3}
+  m_Name: RatHP
   m_EditorClassIdentifier: 
   health: 12
-  speed: 2
-  strength: 3
-  distanceBetween: 4
