@@ -99,7 +99,7 @@ public class PlayerControllerJ : MonoBehaviour
             GameObject bunObj = Instantiate(bunPrefab, rigidbody2d.position + lookDirection * 0.5f, Quaternion.identity);
 
             Bun projectile = bunObj.GetComponent<Bun>();
-            projectile.Launch(lookDirection, 4);
+            projectile.Launch(lookDirection, 10);
 
             gameManager.UpdateScore(-1);
         }

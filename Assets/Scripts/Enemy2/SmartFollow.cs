@@ -67,7 +67,7 @@ public class SmartFollow : MonoBehaviour
         PlayerControllerJ player = other.gameObject.GetComponent<PlayerControllerJ>();
         if (player != null)
         {
-            hp.TakeDamage(20);
+            hp.TakeDamage(10);
         }
         
     }

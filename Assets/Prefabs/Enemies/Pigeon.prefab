@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7760373140392411941}
   - component: {fileID: 8357921277305491292}
   - component: {fileID: 1018749478}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: Pigeon
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ MonoBehaviour:
   raycastOrigin: {fileID: 7760373140392411994}
   detect:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 256
 --- !u!95 &1018749478
 Animator:
   serializedVersion: 3
