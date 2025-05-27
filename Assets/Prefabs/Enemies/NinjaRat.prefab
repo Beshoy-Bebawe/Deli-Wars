@@ -124,7 +124,7 @@ MonoBehaviour:
   Xdirection: 0
   detect:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 776
   direction: {x: 0, y: 0}
   canKnock: 1
   knocked: 0
