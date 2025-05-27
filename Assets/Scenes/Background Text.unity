@@ -692,3 +692,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Level 1
+  m_MyGameObject: {fileID: 0}
