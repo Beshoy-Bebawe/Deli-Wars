@@ -67,6 +67,11 @@ public class PlayerCombat : MonoBehaviour
             {
                  enemyRat.EnemyDamaged();
             }
+            Trash enemyTrash = enemy.GetComponent<Trash>();
+            if (enemyTrash != null)
+            {
+                 enemyTrash.EnemyDamaged();
+            }
             }
         }
 

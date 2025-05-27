@@ -127,7 +127,7 @@ public class NinjaRat : MonoBehaviour
         if ((playerD != null)  && playerD.Invic == false )
         {
             FindObjectOfType<HitStop>().Stop(0.2f);
-            playerD.ChangeHealth(-1);
+            playerD.ChangeHealth(-2);
             StartCoroutine(HitStop());
         }
     }
