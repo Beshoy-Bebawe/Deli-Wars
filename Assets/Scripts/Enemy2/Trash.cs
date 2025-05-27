@@ -6,26 +6,36 @@ public class Trash : MonoBehaviour
 {
      public GameObject trashPrefab;
      private GameObject player;
-     Rigidbody2D rb;
 
      public float distanceBetween;
      public LayerMask detect;
      
+    public Vector2 direction;
+    Rigidbody2D rb;
+
+    Animator animator;
+
      bool LOS = false;
      float distance;
 
    //public List<GameObject> targets; 
     void Awake()
     {
+      animator = GetComponent<Animator>();
+      player =  GameObject.Find("Mike Cousin(Amir)");
       rb = GetComponent<Rigidbody2D>();
-      InvokeRepeating("TrashLaunch", 0.0f, 1.3f);
-      player =  GameObject.Find("Mike Cousins");
-
     }
     // Update is called once per frame
     void Update()
     {
 
+        direction = player.transform.position - transform.position;
+        direction.Normalize();
+       if(LOS && (distance < distanceBetween))
+      {
+       StartCoroutine(timer());
+      }
+      
     }
      void FixedUpdate()
     {
@@ -60,11 +70,29 @@ public class Trash : MonoBehaviour
         Instantiate(trashPrefab, transform.position, trashPrefab.transform.rotation);
       }
 
-      private void TrashLaunch()
+    private void TrashLaunch()
+    {
+      if(LOS && (distance < distanceBetween))
       {
-        if(LOS && (distance < distanceBetween))
-        {
-        Instantiate(trashPrefab, transform.position, trashPrefab.transform.rotation);
-        }
+       animator.SetBool("Atk" , true);  
+      
       }
+      else
+      {
+        animator.SetBool("Atk" , false);
+      }
+    }
+
+       public void EnemyDamaged()
+    {
+        EnemyHP r = GetComponent<EnemyHP>();
+        StartCoroutine(r.Knockback(direction,rb));
+        r.TakeDamage(-4);
+    }
+    IEnumerator timer()
+    {
+      yield return new WaitForSeconds(1f);
+      animator.SetTrigger("Atk 0");
+    }
+
 }
