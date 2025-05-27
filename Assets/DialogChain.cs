@@ -12,16 +12,15 @@ public class DialogChain : MonoBehaviour
     public string[] lines;
     public float textSpeed;
     public GameObject dialogBox;
-     public GameObject dialogPrompt;
+    public GameObject dialogPrompt;
     private bool dialogTrigger;
 
     private int index;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         textComponent.text= string.Empty;
         StartDialogue();
-
     }
 
     // Update is called once per frame
@@ -37,11 +36,9 @@ public class DialogChain : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.X) && dialogTrigger)
         { 
-            Debug.Log("HI");
             dialogBox.gameObject.SetActive(true);
             if (textComponent.text == lines[index])
             { 
-               
                 NextLine();
             }
             else
@@ -54,12 +51,13 @@ public class DialogChain : MonoBehaviour
     
     void StartDialogue()
     {
-        index = 0;
+         index = 0;
         StartCoroutine(TypeLine());
     }
 
     IEnumerator TypeLine()
     {
+       
         foreach (char c in lines[index].ToCharArray())
         {
             textComponent.text += c;
@@ -87,6 +85,7 @@ public class DialogChain : MonoBehaviour
         if(other.gameObject.CompareTag("Player") )
         {
             dialogTrigger = true;
+            index = 0;
         }
     }
     void OnTriggerExit2D(Collider2D other)
@@ -94,6 +93,9 @@ public class DialogChain : MonoBehaviour
         if(other.gameObject.CompareTag("Player") )
         {
             dialogTrigger = false;
+            dialogBox.gameObject.SetActive(false);
+            index = 1;
+            StopAllCoroutines();
         }
     }
 
