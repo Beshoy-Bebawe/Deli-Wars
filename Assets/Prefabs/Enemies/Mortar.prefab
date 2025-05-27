@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 4106656326827820649}
   - component: {fileID: 4106656326827820648}
   - component: {fileID: 8808518013915725585}
-  m_Layer: 11
+  - component: {fileID: 840987474}
+  m_Layer: 8
   m_Name: Mortar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +98,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -105,7 +106,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!61 &4106656326827820648
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -145,8 +146,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashPrefab: {fileID: 722926679191896830, guid: dff07f3bebaeb49728e1d1ca392e0f2d, type: 3}
-  player: {fileID: 0}
   distanceBetween: 7
   detect:
     serializedVersion: 2
-    m_Bits: 3072
+    m_Bits: 768
+  direction: {x: 0, y: 0}
+--- !u!114 &840987474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4106656326827820650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdbc8d514e6a54794a8b40139c1534ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 11400000, guid: 79517d1403eda4e9bb2284f324cd337e, type: 2}
+  canKnock: 1
+  knocked: 0
