@@ -5,8 +5,8 @@ public class NinjaRat : MonoBehaviour
 {
     public ScriptObj Rat;
     public GameObject player;
+    public GameObject enemy;
     private int speed;
-    private int health;
     private int strength;
     private float distanceBetween;
     bool LOS = false;
@@ -19,7 +19,6 @@ public class NinjaRat : MonoBehaviour
     PlayerDamTest playerD;
     public Vector2 direction;
     SpriteRenderer rend;
-    int currentHealth;
     float kbTime = 4f;
     public bool canKnock = true;
     public bool knocked;
@@ -30,13 +29,11 @@ public class NinjaRat : MonoBehaviour
     void Awake()
     {
         speed = Rat.speed;
-        health = Rat.health;
         strength = Rat.strength;
         distanceBetween = Rat.distanceBetween;
-        Debug.Log(speed + " " +health+ " " + strength);
-        currentHealth = health;
+        Debug.Log(speed + " " + strength);
         rend = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();
+        rb = enemy.GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
 
@@ -49,7 +46,8 @@ public class NinjaRat : MonoBehaviour
         {
             return;
         }   
-        
+        if(player!= null)
+        {
         distance = Vector2.Distance(transform.position, player.transform.position);
         direction = player.transform.position - transform.position;
         direction.Normalize();
@@ -65,6 +63,7 @@ public class NinjaRat : MonoBehaviour
                 {
                     anim.SetBool("Direction", false);
                 }
+        }
         }
         // else
         // {
@@ -98,6 +97,8 @@ public class NinjaRat : MonoBehaviour
     void FixedUpdate() 
     {
         // Calculate direction from this object to the playerw
+        if(player!= null)
+        {
         Vector2 direction = player.transform.position - transform.position;
         // Cast the ray toward the player, using the inverse of detect layermask
         RaycastHit2D ray = Physics2D.Raycast(transform.position, direction, Mathf.Infinity, ~detect);
@@ -115,62 +116,39 @@ public class NinjaRat : MonoBehaviour
                 Debug.DrawRay(transform.position, direction, Color.red);
             }
         }
+        }
     }
     
     void OnCollisionStay2D(Collision2D other)
     {
         playerD = other.gameObject.GetComponent<PlayerDamTest>();
-        Vector2 direction = player.transform.position - transform.position;
+        Vector2 direction = transform.position - player.transform.position ;
         
         if ((playerD != null)  && playerD.Invic == false )
         {
             FindObjectOfType<HitStop>().Stop(0.2f);
-            playerD.ChangeHealth(-1);
+            playerD.ChangeHealth(-2);
             StartCoroutine(HitStop());
         }
     }
-
-    public void TakeDamage(int damage) 
-    {
-        if (canKnock)
-        {
-        currentHealth = Mathf.Clamp(currentHealth + damage,0,health);
-        
-
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-        }
-    }
-
-    void Die()
-    {
-        Destroy(gameObject);
-    }
-
     IEnumerator HitStop()
     {
         while(Time.timeScale != 1.0f)
         yield return null;
-        StartCoroutine(playerD.Knockback());
+        if(playerD!= null)
+        {
+        StartCoroutine(playerD.Knockback(direction));
+        }
+    }
+
+    public void EnemyDamaged()
+    {
+        EnemyHP t = GetComponent<EnemyHP>();
+        StartCoroutine(t.Knockback(direction,rb));
+        t.TakeDamage(-4);
     }
     
-    public IEnumerator Knockback()
-    {
-        canKnock = false;
-        knocked = true;
-        rb.velocity = -direction * kbPow;
-        rend.color = Color.red;
-        yield return new WaitForSeconds(.25f);
-        knocked = false;
-        rend.color = Color.white;
-        rb.velocity  = Vector2.zero;
-        yield return new WaitForSeconds(kbCD);
-        canKnock = true;
-
-
-    }
+    
 
    
 

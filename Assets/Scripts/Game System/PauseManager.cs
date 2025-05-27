@@ -39,6 +39,10 @@ public class PauseManager : MonoBehaviour
 
     public void RestartLevel([SerializeField] string sceneName)
     {
+        if(Time.timeScale ==0)
+        {
+            Time.timeScale = 1;
+        }
         SceneManager.LoadScene(sceneName);
     }
 

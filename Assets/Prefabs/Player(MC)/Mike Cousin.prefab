@@ -201,10 +201,10 @@ GameObject:
   - component: {fileID: 6847199743208931712}
   - component: {fileID: 4531556067447743749}
   - component: {fileID: 175321527172895565}
-  - component: {fileID: 1926431763}
   - component: {fileID: 1926431757}
   - component: {fileID: 1926431758}
   - component: {fileID: 1926431759}
+  - component: {fileID: 1926431763}
   m_Layer: 7
   m_Name: Mike Cousin
   m_TagString: Player
@@ -221,7 +221,7 @@ Transform:
   m_GameObject: {fileID: 6847199743208931713}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.49, y: 0.9, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1.75, y: 1.5, z: 1}
   m_Children:
   - {fileID: 1575691439}
   - {fileID: 1426063926}
@@ -347,6 +347,68 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.26096514, y: 0.612497}
   m_EdgeRadius: 0
+--- !u!114 &1926431757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6847199743208931713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf726e405de144f491770f0052d94ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  canKnock: 1
+  knocked: 0
+  Invicibletimer: 2
+  Invic: 0
+  wasHit: 0
+--- !u!114 &1926431758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6847199743208931713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c62c6642e554a72bfd4965ecb9ad31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockWindow: 0
+  speed: 10
+  rigidbody2d: {fileID: 0}
+  lookDirection: {x: 1, y: 0}
+  move: {x: 0, y: 0}
+  canDash: 1
+  atkTakeEffect: 0
+  isBlocking: 0
+  canBlock: 1
+--- !u!114 &1926431759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6847199743208931713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a6873a9ff4e48a0afc9d964687bb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHit: 0
+  AtkPoint:
+  - {fileID: 1575691439}
+  - {fileID: 1426063926}
+  - {fileID: 159163569}
+  - {fileID: 1653351529}
+  AtkTrigger: []
+  attackRange: 1.2
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!96 &1926431763
 TrailRenderer:
   serializedVersion: 2
@@ -454,64 +516,3 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 0
---- !u!114 &1926431757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6847199743208931713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acf726e405de144f491770f0052d94ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 5
-  speed: 10
-  canKnock: 1
-  knocked: 0
-  Invicibletimer: 2
-  Invic: 0
-  wasHit: 0
-  Rat: {fileID: 0}
---- !u!114 &1926431758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6847199743208931713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35c62c6642e554a72bfd4965ecb9ad31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  rigidbody2d: {fileID: 0}
-  lookDirection: {x: 1, y: 0}
-  move: {x: 0, y: 0}
-  canDash: 1
-  atkTakeEffect: 0
---- !u!114 &1926431759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6847199743208931713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0a6873a9ff4e48a0afc9d964687bb4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isHit: 0
-  AtkPoint:
-  - {fileID: 1575691439}
-  - {fileID: 1426063926}
-  - {fileID: 159163569}
-  - {fileID: 1653351529}
-  AtkTrigger: []
-  attackRange: 1.2
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 256
