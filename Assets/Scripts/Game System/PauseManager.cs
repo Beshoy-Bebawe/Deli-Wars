@@ -9,6 +9,7 @@ public class PauseManager : MonoBehaviour
 {
     private bool isPaused;
     public GameObject pauseScreen;
+   // public GameObject hp;
     // Start is called before the first frame update
     void Awake()
     {
@@ -25,11 +26,13 @@ public class PauseManager : MonoBehaviour
             {
                 Time.timeScale = 0;
                 pauseScreen.gameObject.SetActive(true);
+                //hp.gameObject.SetActive(false);
             }
             else
             {
                 Time.timeScale = 1;
                 pauseScreen.gameObject.SetActive(false);
+                //hp.gameObject.SetActive(true);
             }
         }
     }

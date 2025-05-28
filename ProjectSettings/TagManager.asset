@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Powerup
+  - Enemy
+  - Collect
   - Rat
   layers:
   - Default
@@ -17,8 +19,8 @@ TagManager:
   - Player
   - Enemy
   - Sewer gate
-  - Objects
-  - 
+  - HealthBar
+  - Bun
   - 
   - 
   - 

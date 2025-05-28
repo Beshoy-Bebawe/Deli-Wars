@@ -1,10 +1,11 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; // Add this for UI components
 
 public class PlayerControllerAnim : MonoBehaviour
 {
-    [SerializeField] float blockWindow;
     public float speed = 10.0f;
     public Rigidbody2D rigidbody2d;
     Animator animator;
@@ -21,16 +22,24 @@ public class PlayerControllerAnim : MonoBehaviour
     public bool canDash = true;
     bool dashing;
     float dashTime = .4f;
-    float dashPow = 10f;
-    float dashCD = 1f;
+    float dashPow = 15f;
+    float dashCD = 2f;
     TrailRenderer tr;
     BoxCollider2D dashThrough;
     bool atkInEffect;
     public bool atkTakeEffect;
+    bool cooldown;
+    bool dashcooldown;
+    // Add slider reference
+    public Slider cooldownSlider;
+    float cooldownTimer;
+    float maxCooldownTime = 1f; // Total cooldown duration
 
-    public bool isBlocking = false;
-    public bool canBlock = true;
 
+    public Slider dashcooldownSlider;
+    float dashmaxCooldownTime = 1f;
+    float dashcooldownTimer;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +49,6 @@ public class PlayerControllerAnim : MonoBehaviour
          Attack =  GetComponent<PlayerCombat>();
          tr = GetComponent<TrailRenderer>();
          dashThrough = GetComponent<BoxCollider2D>();
-
          
 
     }
@@ -48,29 +56,39 @@ public class PlayerControllerAnim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
-
-        
         if (dashing)
         {
             return;
-        }   
+        }
 
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-        
+
         move = new Vector2(horizontal, vertical);
-        
+
          if(Input.GetKeyUp(KeyCode.Space) && canDash)
         {
             StartCoroutine(Dash());
-            
-            
         }
 
-        
-       
+        // Update slider during cooldown
+        if (dashcooldown == true)
+        {
+            dashcooldownTimer += Time.deltaTime * (1f/dashCD);
+            if (dashcooldownSlider != null)
+            {
+                dashcooldownSlider.value = dashcooldownTimer / dashmaxCooldownTime;
+            }
+        }
+
+        if (cooldown == true)
+        {
+            cooldownTimer += Time.deltaTime;
+            if (cooldownSlider != null)
+            {
+                cooldownSlider.value = cooldownTimer / maxCooldownTime;
+            }
+        }
 
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
             {
@@ -83,7 +101,7 @@ public class PlayerControllerAnim : MonoBehaviour
             {
                 isIdle = true;
                 startedMoving = false;
-                
+
             }
             if (startedMoving && !isIdle)
             {
@@ -92,25 +110,18 @@ public class PlayerControllerAnim : MonoBehaviour
             else
             {
                 animator.SetBool("Moving", false);
-                
-            }    
+
+            }
 
             animator.SetFloat("Move X", lookDirection.x);
             animator.SetFloat("Move Y", lookDirection.y);
 
         PunchAnim();
-        BlockAnim();
-            
-            
-         
-          //Debug.Log(!PlayerF.knocked);
-          //Debug.Log(isBlocking);
-          //Debug.Log(canBlock);
     }
+    
     void FixedUpdate()
     {
-
-        if(PlayerF.knocked == false && isBlocking == false)
+        if(!PlayerF.knocked)
         {
             if (dashing)
             {
@@ -120,13 +131,9 @@ public class PlayerControllerAnim : MonoBehaviour
             Vector2 position = rigidbody2d.position;
             position.x = position.x + speed * horizontal * Time.deltaTime;
             position.y = position.y + speed * vertical * Time.deltaTime;
-            
-            
+
             rigidbody2d.MovePosition(position);
         }
-        
-       
-        
     }
 
     void PunchAnim()
@@ -134,37 +141,19 @@ public class PlayerControllerAnim : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.C) && atkInEffect == false )
         {
             StartCoroutine(AttackWindow());
-            
-        }
-  
-            
-        
-    }
-
-    void BlockAnim()
-    {
-        if(Input.GetKey(KeyCode.B) && canBlock == true )
-        {
-            isBlocking = true;
-            PlayerF.Invic = true;
-            StartCoroutine(BlockCD());
-        }
-
-        if(Input.GetKeyUp(KeyCode.B) && canBlock == true)
-        {
-            isBlocking = false;
-
-
         }
     }
 
     public IEnumerator Dash()
         {
         Physics2D.IgnoreLayerCollision(7,8,true);
+        Physics2D.IgnoreLayerCollision(7,10,true);
         canDash = false;
         dashing = true;
         PlayerF.Invic = true;
         rigidbody2d.velocity = lookDirection * dashPow;
+        
+        // setting trail direction
         tr.emitting = true;
         if (lookDirection == Vector2.up)
         {
@@ -179,13 +168,24 @@ public class PlayerControllerAnim : MonoBehaviour
         dashing = false;
         tr.emitting = false;
         Physics2D.IgnoreLayerCollision(7,8,false);
+        Physics2D.IgnoreLayerCollision(7,10,false);
         rigidbody2d.velocity  = Vector2.zero;
         PlayerF.Invic = false;
+        dashcooldown = true;
+        dashcooldownTimer = 0f;
+        if (dashcooldownSlider != null)
+        {
+            dashcooldownSlider.value = 0f; // Start slider at 0
+        }
         yield return new WaitForSeconds(dashCD);
+        dashcooldown = false;
+        if (dashcooldownSlider != null)
+        {
+            dashcooldownSlider.value = 1f; // Ensure slider reaches 1 when cooldown ends
+        }
         Debug.Log("Works Too");
         canDash = true;
         }
-
 
     public IEnumerator AttackWindow()
     {
@@ -196,25 +196,22 @@ public class PlayerControllerAnim : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         atkTakeEffect = true;
         Attack.Punch();
+        cooldown = true;
+        cooldownTimer = 0f; // Reset timer when cooldown starts
+        if (cooldownSlider != null)
+        {
+            cooldownSlider.value = 0f; // Start slider at 0
+        }
         yield return new WaitForSeconds(0.05f);
         animator.SetBool("Attack", false);
         atkTakeEffect = false;
         PlayerF.Invic = false;
         yield return new WaitForSeconds(1f);
+        cooldown = false;
+        if (cooldownSlider != null)
+        {
+            cooldownSlider.value = 1f; // Ensure slider reaches 1 when cooldown ends
+        }
         atkInEffect = false;
     }
-
-    public IEnumerator BlockCD()
-    {
-        yield return new WaitForSeconds(blockWindow);
-        canBlock = true;
-        
-    }  
-   
-
-    
-
-        
-    
-
 }

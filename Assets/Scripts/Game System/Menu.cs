@@ -8,6 +8,7 @@ public class Menu : MonoBehaviour
     public GameObject mainMenu;
     public GameObject levelSelect;
     public GameObject startScreen;
+    public GameObject QuitGame;
     // Start is called before the first frame update
    
 //    void Awake()
@@ -46,8 +47,6 @@ public class Menu : MonoBehaviour
        public void EnableMain()
     {
         mainMenu.SetActive(true);
-        levelSelect.SetActive(false);
-        optionsMenu.SetActive(false);
         Debug.Log("Enabled");
 
     }
@@ -63,9 +62,11 @@ public class Menu : MonoBehaviour
         levelSelect.SetActive(true);
         Debug.Log("Enabled");
     }
-
-    public void QuitGame()
+    public void doExitGame() 
     {
         Application.Quit();
+        Debug.Log("Quit");
     }
+
+
 }

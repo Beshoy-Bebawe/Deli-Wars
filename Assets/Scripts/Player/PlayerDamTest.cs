@@ -6,6 +6,7 @@ public class PlayerDamTest : MonoBehaviour
 {
     public int maxHealth;
     int CurrentHealth;
+    
 
     public int health
     {
@@ -20,7 +21,7 @@ public class PlayerDamTest : MonoBehaviour
     float kbTime = 4f;
     public bool canKnock = true;
     public bool knocked;
-    float kbPow = 9f;
+    float kbPow = 5f;
     float kbCD = 1f;
 
     public float Invicibletimer = 2.0f;
@@ -31,6 +32,8 @@ public class PlayerDamTest : MonoBehaviour
     SpriteRenderer rend;
     
     PlayerControllerAnim Pdirect;
+
+    Projectile proj;
     
 
 
@@ -64,8 +67,7 @@ public class PlayerDamTest : MonoBehaviour
         wasHit = true;
         
 
-        Invic = true;
-        Invicibletimer = .5f;
+        
 
 
 
@@ -86,18 +88,37 @@ public class PlayerDamTest : MonoBehaviour
         knocked = true;
         Pdirect.rigidbody2d.velocity = direction * kbPow;
         Invic = true;
+        
         rend.color = Color.red;
+        Debug.Log("1");
         yield return new WaitForSeconds(.25f);
+        Debug.Log("Invic " + Invic);
         knocked = false;
         rend.color = Color.white;
         Pdirect.rigidbody2d.velocity  = Vector2.zero;
-        yield return new WaitForSeconds(.75f);
+        yield return new WaitForSeconds(2f);
         Invic = false;
+        Debug.Log("2");
         yield return new WaitForSeconds(kbCD);
         canKnock = true;
 
 
     }
+
+     void OnCollisionEnter2D(Collision2D other)
+     {
+        proj = other.gameObject.GetComponent<Projectile>();
+        if(other.gameObject == proj.gameObject && Invic == false )
+        {
+            StartCoroutine(Knockback(proj.knockfrom));
+        }
+        else if(other.gameObject != proj.gameObject)
+        {
+            Debug.Log("Not Projectile");
+        }
+       
+        
+     }
 
 
     // private IEnumerator Teleport()
