@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour
         Vector2 direction = player.position - transform.position;
         obj = GetComponent<SpriteRenderer>();
         // obj.enabled = true;
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 3f);
     }
 
     protected virtual void Update()

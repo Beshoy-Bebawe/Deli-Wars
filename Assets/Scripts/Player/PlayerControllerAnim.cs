@@ -23,7 +23,7 @@ public class PlayerControllerAnim : MonoBehaviour
     bool dashing;
     float dashTime = .4f;
     float dashPow = 15f;
-    float dashCD = 4f;
+    float dashCD = 2f;
     TrailRenderer tr;
     BoxCollider2D dashThrough;
     bool atkInEffect;
