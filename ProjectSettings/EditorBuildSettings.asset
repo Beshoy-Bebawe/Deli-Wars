@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/main menu.unity
     guid: 383861065f85947ca83d19b6a47ecb11
   - enabled: 1
+    path: Assets/Scenes/Background Text.unity
+    guid: 61eeb13689de34758a1a98b36c3b7cb1
+  - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: 2be1f62242e934c6da85635e01a9ae28
   - enabled: 0

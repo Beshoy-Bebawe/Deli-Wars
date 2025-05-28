@@ -5399,6 +5399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: main menu
   m_MyGameObject: {fileID: 1877836490}
+  BGTextClip: {fileID: 0}
 --- !u!4 &1151960314
 Transform:
   m_ObjectHideFlags: 0
