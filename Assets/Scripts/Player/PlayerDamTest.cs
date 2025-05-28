@@ -6,6 +6,7 @@ public class PlayerDamTest : MonoBehaviour
 {
     public int maxHealth;
     int CurrentHealth;
+    
 
     public int health
     {
