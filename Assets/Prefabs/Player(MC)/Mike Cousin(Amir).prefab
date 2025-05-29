@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 1905738825759917306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.15, y: -10.47, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1.75, y: 1.75, z: 1}
   m_Children:
   - {fileID: 5004810621487768020}
   - {fileID: 5004810621339453261}
@@ -209,7 +209,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5
+        value: 0.23104396
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -279,13 +279,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
-  speed: 10
   canKnock: 1
   knocked: 0
   Invicibletimer: 2
   Invic: 0
   wasHit: 0
-  Rat: {fileID: 0}
 --- !u!114 &5004810621839556981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,12 +296,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c62c6642e554a72bfd4965ecb9ad31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
   rigidbody2d: {fileID: 0}
   lookDirection: {x: 1, y: 0}
   move: {x: 0, y: 0}
   canDash: 1
   atkTakeEffect: 0
+  cooldownSlider: {fileID: 0}
+  dashcooldownSlider: {fileID: 0}
 --- !u!114 &5004810621839556980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
   - {fileID: 5004810620071502282}
   - {fileID: 5004810621565690130}
   AtkTrigger: []
-  attackRange: 1.2
+  attackRange: 0.4
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256

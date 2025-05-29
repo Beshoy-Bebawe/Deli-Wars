@@ -135,14 +135,6 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1905738825759917305, guid: c4f6d8e3abc454e9499a6cc5818d6314, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1905738825759917305, guid: c4f6d8e3abc454e9499a6cc5818d6314, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1905738825759917305, guid: c4f6d8e3abc454e9499a6cc5818d6314, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.41
       objectReference: {fileID: 0}
@@ -185,26 +177,6 @@ PrefabInstance:
     - target: {fileID: 1905738825759917306, guid: c4f6d8e3abc454e9499a6cc5818d6314, type: 3}
       propertyPath: m_Name
       value: Mike Cousin(Amir)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5004810621839556968, guid: c4f6d8e3abc454e9499a6cc5818d6314, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5004810621839556968, guid: c4f6d8e3abc454e9499a6cc5818d6314, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.23104396
-      objectReference: {fileID: 0}
-    - target: {fileID: 5004810621839556980, guid: c4f6d8e3abc454e9499a6cc5818d6314, type: 3}
-      propertyPath: attackRange
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5004810621839556981, guid: c4f6d8e3abc454e9499a6cc5818d6314, type: 3}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5004810621839556982, guid: c4f6d8e3abc454e9499a6cc5818d6314, type: 3}
-      propertyPath: Rat
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4f6d8e3abc454e9499a6cc5818d6314, type: 3}
@@ -2592,7 +2564,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b3fc808fe664f4eb8b60b96c3ba86099, type: 2}
+  - {fileID: 2100000, guid: 85c562107dc0c4c7da75a4916964bb2b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
