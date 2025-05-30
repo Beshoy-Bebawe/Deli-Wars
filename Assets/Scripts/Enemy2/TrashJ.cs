@@ -19,7 +19,7 @@ public class TrashJ : MonoBehaviour
     {
       rb = GetComponent<Rigidbody2D>();
       InvokeRepeating("TrashLaunch", 0.0f, 1.3f);
-      player =  GameObject.Find("Mike Cousins");
+      player =  GameObject.Find("Mike Cousin(Amir)");
 
     }
     // Update is called once per frame

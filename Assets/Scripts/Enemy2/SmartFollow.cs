@@ -21,7 +21,7 @@ public class SmartFollow : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        player =  GameObject.Find("Mike Cousins");
+        player =  GameObject.Find("Mike Cousin(Amir)");
         hp = GameObject.Find("Health Manager").GetComponent<HealthManager>(); 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
