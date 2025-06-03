@@ -5,7 +5,6 @@ using UnityEngine;
 public class Bun : MonoBehaviour
 {
     Rigidbody2D rigidbody2d;
-    public LayerMask detect;
 void Awake()
 {
     rigidbody2d = GetComponent<Rigidbody2D>();

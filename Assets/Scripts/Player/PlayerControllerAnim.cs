@@ -6,7 +6,7 @@ using UnityEngine.UI; // Add this for UI components
 
 public class PlayerControllerAnim : MonoBehaviour
 {
-    public float speed = 10.0f;
+    public float speed = 4.0f;
     public Rigidbody2D rigidbody2d;
     Animator animator;
     float horizontal;
@@ -19,6 +19,14 @@ public class PlayerControllerAnim : MonoBehaviour
     PlayerCombat Attack;
     public Vector2 move;
 
+    public GameObject bunPrefab;
+    private GameManager gameManager;
+    public int pointValue;
+
+    public bool hasPowerup = false;
+    public PowerUpType currentPowerUp = PowerUpType.None;
+    private Coroutine powerupCountdown;
+
     public bool canDash = true;
     bool dashing;
     float dashTime = .4f;
@@ -30,6 +38,7 @@ public class PlayerControllerAnim : MonoBehaviour
     public bool atkTakeEffect;
     bool cooldown;
     bool dashcooldown;
+    bool projcooldown;
     // Add slider reference
     public Slider cooldownSlider;
     float cooldownTimer;
@@ -39,6 +48,15 @@ public class PlayerControllerAnim : MonoBehaviour
     public Slider dashcooldownSlider;
     float dashmaxCooldownTime = 1f;
     float dashcooldownTimer;
+
+    public Slider projcooldownSlider;
+    float projmaxCooldownTime = 1f;
+    float projcooldownTimer;
+
+    public AudioClip punchSound;
+    AudioSource audioSource;
+
+    public bool canShoot = true;
     
     // Start is called before the first frame update
     void Start()
@@ -49,6 +67,8 @@ public class PlayerControllerAnim : MonoBehaviour
          Attack =  GetComponent<PlayerCombat>();
          tr = GetComponent<TrailRenderer>();
          dashThrough = GetComponent<BoxCollider2D>();
+         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+         audioSource = GetComponent<AudioSource>();
          
 
     }
@@ -56,6 +76,14 @@ public class PlayerControllerAnim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentPowerUp == PowerUpType.Speed)
+           {
+            speed = 7.0f;
+           }
+        else{
+            speed = 4.0f;
+        }
+
         if (dashing)
         {
             return;
@@ -71,6 +99,11 @@ public class PlayerControllerAnim : MonoBehaviour
             StartCoroutine(Dash());
         }
 
+         if (Input.GetKeyDown(KeyCode.M) && canShoot)
+            {
+                 ShootBuns();
+            }
+
         // Update slider during cooldown
         if (dashcooldown == true)
         {
@@ -83,10 +116,19 @@ public class PlayerControllerAnim : MonoBehaviour
 
         if (cooldown == true)
         {
-            cooldownTimer += Time.deltaTime;
+            cooldownTimer += Time.deltaTime * 4;
             if (cooldownSlider != null)
             {
                 cooldownSlider.value = cooldownTimer / maxCooldownTime;
+            }
+        }
+
+        if (projcooldown == true)
+        {
+            projcooldownTimer += Time.deltaTime * (1f/2f);
+            if (projcooldownSlider != null)
+            {
+                projcooldownSlider.value = projcooldownTimer / projmaxCooldownTime;
             }
         }
 
@@ -193,6 +235,7 @@ public class PlayerControllerAnim : MonoBehaviour
         PlayerF.Invic = true;
         atkInEffect = true;
         atkTakeEffect = false;
+        audioSource.PlayOneShot(punchSound, 0.7f);
         yield return new WaitForSeconds(0.5f);
         atkTakeEffect = true;
         Attack.Punch();
@@ -200,18 +243,84 @@ public class PlayerControllerAnim : MonoBehaviour
         cooldownTimer = 0f; // Reset timer when cooldown starts
         if (cooldownSlider != null)
         {
+            Debug.Log("Here");
             cooldownSlider.value = 0f; // Start slider at 0
         }
         yield return new WaitForSeconds(0.05f);
         animator.SetBool("Attack", false);
         atkTakeEffect = false;
-        PlayerF.Invic = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.25f);
         cooldown = false;
         if (cooldownSlider != null)
         {
             cooldownSlider.value = 1f; // Ensure slider reaches 1 when cooldown ends
         }
+        PlayerF.Invic = false;
         atkInEffect = false;
+    }
+
+     private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.gameObject.CompareTag("Powerup") )
+        {
+            Debug.Log("powerup");
+            hasPowerup = true;
+            currentPowerUp = other.gameObject.GetComponent<PowerUp>().powerUpType;
+            Destroy(other.gameObject);
+
+            if(powerupCountdown != null)
+            {
+                StopCoroutine(powerupCountdown);
+            }
+            powerupCountdown = StartCoroutine(PowerupCountdownRoutine());
+        }
+        if(other.gameObject.CompareTag("Collect"))
+        {
+            Destroy(other.gameObject);
+            gameManager.UpdateScore(pointValue);
+        }
+    }
+
+    public void ShootBuns()
+    {
+      
+        StartCoroutine(ShootingCooldown());
+    }
+
+     IEnumerator PowerupCountdownRoutine()
+    {
+        yield return new WaitForSeconds(5);
+        hasPowerup = false; 
+        currentPowerUp = PowerUpType.None;
+
+    }
+    IEnumerator ShootingCooldown()
+    {
+        if(gameManager.score > 0)
+        {
+            Debug.Log("Stuff");
+            GameObject bunObj = Instantiate(bunPrefab, rigidbody2d.position + lookDirection * 0.5f, Quaternion.identity);
+
+            Bun projectile = bunObj.GetComponent<Bun>();
+            
+            projectile.Launch(lookDirection, 10);
+            gameManager.UpdateScore(-1);
+            canShoot = false;
+            projcooldown = true;
+            projcooldownTimer = 0f; // Reset timer when cooldown starts
+            if (projcooldownSlider != null)
+            {
+                projcooldownSlider.value = 0f; // Start slider at 0
+            }
+            yield return new WaitForSeconds(2);
+            projcooldown = false;
+            if (projcooldownSlider != null)
+            {
+                projcooldownSlider.value = 1f; // Start slider at 0
+            }
+            canShoot = true;
+        }
+        
     }
 }

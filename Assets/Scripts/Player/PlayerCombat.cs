@@ -61,17 +61,24 @@ public class PlayerCombat : MonoBehaviour
         {
             if(Anim.atkTakeEffect = true)
             {
-            Debug.Log("We hit " + enemy.name);
-            NinjaRat enemyRat = enemy.GetComponent<NinjaRat>();
-            if (enemyRat != null)
-            {
-                 enemyRat.EnemyDamaged();
-            }
-            Trash enemyTrash = enemy.GetComponent<Trash>();
-            if (enemyTrash != null)
-            {
-                 enemyTrash.EnemyDamaged();
-            }
+                Debug.Log("We hit " + enemy.name);
+                NinjaRat enemyRat = enemy.GetComponent<NinjaRat>();
+                Trash enemyTrash = enemy.GetComponent<Trash>();
+                PidgeonMovement enemyBird = enemy.GetComponent<PidgeonMovement>();
+                if (enemyRat != null)
+                {
+                    enemyRat.EnemyDamaged();
+                }
+                
+                if (enemyTrash != null)
+                {
+                    enemyTrash.EnemyDamaged();
+                }
+                
+                if (enemyBird != null)
+                {
+                    enemyBird.EnemyDamaged();
+                }
             }
         }
 

@@ -13,11 +13,12 @@ public class Projectile : MonoBehaviour
     public LayerMask detect;
     bool comp;
     SpriteRenderer obj;
+    private HealthManager hp;
 
     Coroutine Knockback;
     protected virtual void Awake()
     {
-        
+        hp = GameObject.Find("Health Manager").GetComponent<HealthManager>(); 
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerK = GameObject.Find("Mike Cousin(Amir)");
         Vector2 direction = player.position - transform.position;
@@ -52,7 +53,8 @@ public class Projectile : MonoBehaviour
         if ((playerD != null)  && (playerD.Invic == false) )
         {
             FindObjectOfType<HitStop>().Stop(0.2f);
-            playerD.ChangeHealth(-1);
+            playerD.ChangeHealth(-20);
+            hp.TakeDamage(20);
         }
         else if (playerD.Invic == true)
         {

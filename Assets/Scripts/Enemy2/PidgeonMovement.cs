@@ -1,41 +1,130 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public class PidgeonMovement : MonoBehaviour
+{
+    private GameObject player;
+    bool LOS = false;
+    private float speed = 2;
+    public float distanceBetween;
+    public Transform raycastOrigin; // Reference to the raycast origin point
+    public LayerMask detect; // LayerMask for detection
+    Vector3 odirection;
+    Animator anim;
+    private HealthManager hp;
+    PlayerDamTest playerD;
+    private Transform playerTransform;
+ 
+    float distance;
 
-// public class PidgeonMovement : MonoBehaviour
-// {
-//     public GameObject[] points;
-//     Rigidbody2D rb;
-//     int point;
-//     public float speed;
-//     // Start is called before the first frame update
-//     void Start()
-//     {
-//         rb = GetComponent<Rigidbody2D>();
-//     }
+    Rigidbody2D rb;
+    // Start is called before the first frame update
+    void Awake()
+    {
+        player =  GameObject.Find("Mike Cousin(Amir)");
+        hp = GameObject.Find("Health Manager").GetComponent<HealthManager>(); 
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
-//     // Update is called once per frame
-//     void Update()
-//     {
-//         CyclePoint();
-//     }
+        if (raycastOrigin == null)
+        {
+            raycastOrigin = transform;
+        }
+        
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        distance = Vector2.Distance(transform.position, player.transform.position);
+        Vector2 direction = player.transform.position - transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        if ((distance < distanceBetween) && LOS)
+        {
+            anim.SetBool("Follow", true);
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+            odirection = playerTransform.position - transform.position;
+            rotateEnemy();
+        }
+        else
+        {
+            anim.SetBool("Follow", false);
+        }
+    }
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, distanceBetween);
+    }
+    private void rotateEnemy()
+    {
+        float angle = Mathf.Atan2(odirection.y, odirection.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+        odirection = odirection.normalized;
+    }
+    void OnCollisionStay2D(Collision2D other)
+    {
+        playerD = other.gameObject.GetComponent<PlayerDamTest>();
+        
 
-//     void CyclePoint()
-//     {
-//         point = 0;
-//         while(point < 5)
-//         {
-//             transform.position = Vector2.MoveTowards(rb.position, points[point].transform.position, speed * Time.deltaTime);
-//             StartCoroutine(Timer(20));
-//        
-//            
-//             Debug.Log(point);
-//         }
-//     }
+         if ((playerD != null)  && playerD.Invic == false )
+        {
+            FindObjectOfType<HitStop>().Stop(0.2f);
+            hp.TakeDamage(15);
+            playerD.ChangeHealth(-15);
+            StartCoroutine(HitStop());
+        }
+        
+    }
+    void FixedUpdate()
+    {
+        // Calculate direction from this object to the player
+        Vector2 direction = player.transform.position - raycastOrigin.position;
+        // Cast the ray toward the player, using the inverse of detect layermask
+        RaycastHit2D ray = Physics2D.Raycast(raycastOrigin.position, direction, Mathf.Infinity, ~detect);
+        if (ray.collider != null)
+        {
+            
+            LOS = ray.collider.gameObject.CompareTag("Player");
+            if (ray.collider.gameObject.CompareTag("Player"))
+            {
+                Debug.DrawRay(raycastOrigin.position, direction, Color.green);
+            }
+            else
+            {
+                Debug.DrawRay(raycastOrigin.position, direction, Color.red);
+            }
+        }
+    }
 
-//         IEnumerator Timer(float duration)
-//         {
-//         yield return new WaitForSecondsRealtime(duration);
-//         point++;
-//         }
-// }
+    IEnumerator HitStop()
+    {
+        while(Time.timeScale != 1.0f)
+        yield return null;
+        if(playerD!= null)
+        {
+        StartCoroutine(playerD.Knockback(odirection));
+        }
+    }
+
+    public void EnemyDamaged()
+    {
+        EnemyHP t = GetComponent<EnemyHP>();
+        StartCoroutine(t.Knockback(odirection,rb));
+        t.TakeDamage(-4);
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        
+        Bun projectile = other.gameObject.GetComponent<Bun>();
+        if(other.gameObject == projectile.gameObject)
+        {
+            Debug.Log("Other");
+            EnemyHP t = GetComponent<EnemyHP>();
+            StartCoroutine(t.Knockback(odirection,rb));
+            t.TakeDamage(-4);
+        }
+    }
+
+}
