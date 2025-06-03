@@ -89,6 +89,20 @@ public class Trash : MonoBehaviour
         StartCoroutine(r.Knockback(direction,rb));
         r.TakeDamage(-4);
     }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        
+        Bun projectile = other.gameObject.GetComponent<Bun>();
+        if(other.gameObject == projectile.gameObject)
+        {
+            Debug.Log("Other");
+            EnemyHP t = GetComponent<EnemyHP>();
+            StartCoroutine(t.Knockback(direction,rb));
+            t.TakeDamage(-4);
+        }
+    }
+
     IEnumerator timer()
     {
       yield return new WaitForSeconds(1f);

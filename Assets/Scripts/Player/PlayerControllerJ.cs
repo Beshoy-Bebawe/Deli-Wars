@@ -37,7 +37,7 @@ public class PlayerControllerJ : MonoBehaviour
     {
          rigidbody2d = GetComponent<Rigidbody2D>();
          animator = GetComponent<Animator>();
-         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>(); 
+         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); 
     }
 
     // Update is called once per frame

@@ -8,10 +8,10 @@ public class EnemyHP : MonoBehaviour
     SpriteRenderer rend;
     int currentHealth;
     private int health;
-    float kbTime = 4f;
+    float kbTime = 6f;
     public bool canKnock = true;
     public bool knocked;
-    float kbPow = 6f;
+    float kbPow = 8f;
     float kbCD = 1f;
     bool Invic = false;
     // Start is called before the first frame update

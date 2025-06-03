@@ -25,9 +25,11 @@ public class NinjaRat : MonoBehaviour
     float kbPow = 6f;
     float kbCD = 1f;
     public bool Invic = false;
+     private HealthManager hp;
     // Start is called before the first frame update
     void Awake()
     {
+        hp = GameObject.Find("Health Manager").GetComponent<HealthManager>(); 
         speed = Rat.speed;
         strength = Rat.strength;
         distanceBetween = Rat.distanceBetween;
@@ -127,7 +129,8 @@ public class NinjaRat : MonoBehaviour
         if ((playerD != null)  && playerD.Invic == false )
         {
             FindObjectOfType<HitStop>().Stop(0.2f);
-            playerD.ChangeHealth(-2);
+            hp.TakeDamage(20);
+            playerD.ChangeHealth(-20);
             StartCoroutine(HitStop());
         }
     }
@@ -146,6 +149,19 @@ public class NinjaRat : MonoBehaviour
         EnemyHP t = GetComponent<EnemyHP>();
         StartCoroutine(t.Knockback(direction,rb));
         t.TakeDamage(-4);
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        
+        Bun projectile = other.gameObject.GetComponent<Bun>();
+        if(other.gameObject == projectile.gameObject)
+        {
+            Debug.Log("Other");
+            EnemyHP t = GetComponent<EnemyHP>();
+            StartCoroutine(t.Knockback(direction,rb));
+            t.TakeDamage(-4);
+        }
     }
     
     

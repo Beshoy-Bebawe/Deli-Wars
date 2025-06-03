@@ -20,7 +20,7 @@ public class PlayerDamTest : MonoBehaviour
 
     float kbTime = 4f;
     public bool canKnock = true;
-    public bool knocked;
+    public bool knocked = false;
     float kbPow = 5f;
     float kbCD = 1f;
 
@@ -34,6 +34,8 @@ public class PlayerDamTest : MonoBehaviour
     PlayerControllerAnim Pdirect;
 
     Projectile proj;
+
+    NinjaRat Rat;
     
 
 
@@ -108,15 +110,12 @@ public class PlayerDamTest : MonoBehaviour
      void OnCollisionEnter2D(Collision2D other)
      {
         proj = other.gameObject.GetComponent<Projectile>();
+        Rat = other.gameObject.GetComponent<NinjaRat>();
         if(other.gameObject == proj.gameObject && Invic == false )
         {
             StartCoroutine(Knockback(proj.knockfrom));
         }
-        else if(other.gameObject != proj.gameObject)
-        {
-            Debug.Log("Not Projectile");
-        }
-       
+   
         
      }
 

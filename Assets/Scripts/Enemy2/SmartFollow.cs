@@ -12,7 +12,7 @@ public class SmartFollow : MonoBehaviour
     Vector3 odirection;
     Animator anim;
     private HealthManager hp;
-
+    PlayerDamTest playerD;
     private Transform playerTransform;
  
     float distance;
@@ -21,7 +21,7 @@ public class SmartFollow : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        player =  GameObject.Find("Mike Cousins");
+        player =  GameObject.Find("Mike Cousin(Amir)");
         hp = GameObject.Find("Health Manager").GetComponent<HealthManager>(); 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -64,10 +64,15 @@ public class SmartFollow : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D other)
     {
-        PlayerControllerJ player = other.gameObject.GetComponent<PlayerControllerJ>();
-        if (player != null)
+        playerD = other.gameObject.GetComponent<PlayerDamTest>();
+        Vector2 direction = transform.position - playerD.transform.position;
+
+         if ((playerD != null)  && playerD.Invic == false )
         {
-            hp.TakeDamage(10);
+            FindObjectOfType<HitStop>().Stop(0.2f);
+            hp.TakeDamage(25);
+            playerD.ChangeHealth(-25);
+            StartCoroutine(HitStop());
         }
         
     }
@@ -90,6 +95,23 @@ public class SmartFollow : MonoBehaviour
                 Debug.DrawRay(raycastOrigin.position, direction, Color.red);
             }
         }
+    }
+
+    IEnumerator HitStop()
+    {
+        while(Time.timeScale != 1.0f)
+        yield return null;
+        if(playerD!= null)
+        {
+        StartCoroutine(playerD.Knockback(odirection));
+        }
+    }
+
+    public void EnemyDamaged()
+    {
+        EnemyHP t = GetComponent<EnemyHP>();
+        StartCoroutine(t.Knockback(odirection,rb));
+        t.TakeDamage(-4);
     }
 
 }

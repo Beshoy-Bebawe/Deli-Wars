@@ -9,7 +9,7 @@ public class HealthItem : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        player =  GameObject.Find("Mike Cousins");
+        player =  GameObject.Find("Mike Cousin(Amir)");
         hp = GameObject.Find("Health Manager").GetComponent<HealthManager>(); 
     }
 
@@ -20,10 +20,10 @@ public class HealthItem : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        PlayerControllerJ player = other.gameObject.GetComponent<PlayerControllerJ>();
+        PlayerControllerAnim player = other.gameObject.GetComponent<PlayerControllerAnim>();
         if (player != null && hp.healthAmount < 100)
         {
-            hp.Heal(10);
+            hp.Heal(20);
             Destroy(gameObject);
         }
         
