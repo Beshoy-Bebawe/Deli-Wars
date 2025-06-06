@@ -72,10 +72,14 @@ MonoBehaviour:
 
     P - Pause
 
-    C - Punch
+    H - Punch
 
-    Space
-    - Dash'
+    J
+    - Shoot Buns
+
+    Space - Dash
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -447,7 +451,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5.2196, y: -406}
+  m_AnchoredPosition: {x: 5.2196, y: -405}
   m_SizeDelta: {x: 613.187, y: 954.6885}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8145802199235930233
@@ -618,7 +622,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: SampleScene
+          m_StringArgument: main menu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &8145802199271639447

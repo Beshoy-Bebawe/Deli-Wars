@@ -99,7 +99,7 @@ public class PlayerControllerAnim : MonoBehaviour
             StartCoroutine(Dash());
         }
 
-         if (Input.GetKeyDown(KeyCode.M) && canShoot)
+         if (Input.GetKeyDown(KeyCode.J) && canShoot)
             {
                  ShootBuns();
             }
@@ -180,7 +180,7 @@ public class PlayerControllerAnim : MonoBehaviour
 
     void PunchAnim()
     {
-        if(Input.GetKeyDown(KeyCode.C) && atkInEffect == false )
+        if(Input.GetKeyDown(KeyCode.H) && atkInEffect == false )
         {
             StartCoroutine(AttackWindow());
         }

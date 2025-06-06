@@ -67,10 +67,6 @@ public class PlayerDamTest : MonoBehaviour
         if (Invic)
             return;
         wasHit = true;
-        
-
-        
-
 
 
         CurrentHealth = Mathf.Clamp(CurrentHealth + amount,0,maxHealth);

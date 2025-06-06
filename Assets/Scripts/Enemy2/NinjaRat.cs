@@ -33,7 +33,7 @@ public class NinjaRat : MonoBehaviour
         speed = Rat.speed;
         strength = Rat.strength;
         distanceBetween = Rat.distanceBetween;
-        Debug.Log(speed + " " + strength);
+        //Debug.Log(speed + " " + strength);
         rend = GetComponent<SpriteRenderer>();
         rb = enemy.GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
