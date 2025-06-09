@@ -19,7 +19,7 @@ public class AudioManager : MonoBehaviour
         {
             audioSource.clip = BGTextClip;
             audioSource.Play();
-
+            DontDestroyOnLoad(gameObject);
             Debug.Log("found");
         }
         
